@@ -7,10 +7,34 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="theme-color" content="#6366f1">
+    <meta name="description" content="Bharathsimha Reddy Putta - AI/ML Engineer specializing in Generative AI, Multi-Agent Systems, and cutting-edge technology solutions">
 </head>
 <body>
     <!-- Animated Stars Background -->
     <div class="stars" id="stars-container"></div>
+    
+    <!-- SVG Definitions -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-trail" id="cursor-trail"></div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </div>
     
     <!-- Navigation -->
     <nav class="navbar">
@@ -21,9 +45,11 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#testimonials" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -39,7 +65,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        <span class="typing-text">Hi, I'm Bharathsimha Reddy</span>
+                        Hi, I'm Bharathsimha Reddy
                     </h1>
                     <h2 class="hero-subtitle">AI/ML Engineer & Generative AI Specialist</h2>
                     <p class="hero-description">
@@ -58,16 +84,36 @@
                     </div>
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="stat-number">3+</span>
+                            <span class="stat-number">15+</span>
                             <span class="stat-label">AI Projects</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">2+</span>
+                            <span class="stat-number">1+</span>
                             <span class="stat-label">Years Experience</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">90%</span>
-                            <span class="stat-label">Code Accuracy</span>
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Professional Badges -->
+                    <div class="professional-badges">
+                        <div class="badge">
+                            <i class="fas fa-award"></i>
+                            <span>AI Specialist</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-certificate"></i>
+                            <span>MLOps Certified</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-star"></i>
+                            <span>Top Performer</span>
                         </div>
                     </div>
                 </div>
@@ -141,14 +187,252 @@
                         </div>
                     </div>
                     <div class="skill-category">
-                        <h4><i class="fas fa-cloud"></i> Cloud & DevOps</h4>
-                        <div class="skills">
+                        <div class="skills-category">
+                            <h4>Cloud & DevOps</h4>
                             <span class="skill-tag">AWS</span>
                             <span class="skill-tag">Docker</span>
                             <span class="skill-tag">Kubernetes</span>
                             <span class="skill-tag">MongoDB</span>
                             <span class="skill-tag">MySQL</span>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Professional Skills Progress -->
+                <div class="skills-progress">
+                    <h3>Core Expertise Levels</h3>
+                    <div class="progress-grid">
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Artificial Intelligence & ML</span>
+                                <span class="progress-percentage">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="95"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Multi-Agent Systems</span>
+                                <span class="progress-percentage">92%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="92"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">LangChain & RAG</span>
+                                <span class="progress-percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="90"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Python & FastAPI</span>
+                                <span class="progress-percentage">88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="88"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">React & Frontend</span>
+                                <span class="progress-percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="85"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">MLOps & Deployment</span>
+                                <span class="progress-percentage">82%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Certifications Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Achievements & Recognition</h2>
+                <p class="section-subtitle">Professional milestones and industry recognition</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>AI Innovation Award</h3>
+                    <p>Recognized for developing cutting-edge multi-agent AI systems with 95% efficiency improvement</p>
+                    <div class="achievement-date">2025</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>MLOps Excellence</h3>
+                    <p>Certified in advanced MLOps practices with expertise in model deployment and monitoring</p>
+                    <div class="achievement-date">2024</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>AI/ML Specialization</h3>
+                    <p>Advanced certification in Artificial Intelligence and Machine Learning from leading institutions</p>
+                    <div class="achievement-date">2024</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Open Source Contributor</h3>
+                    <p>Active contributor to AI/ML open source projects with 25+ repositories and growing community</p>
+                    <div class="achievement-date">Ongoing</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Rapid Prototyping Expert</h3>
+                    <p>Specialized in delivering MVP solutions in under 5 minutes with 90% functional accuracy</p>
+                    <div class="achievement-date">2025</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>LLM Integration Specialist</h3>
+                    <p>Expert in integrating multiple LLMs (OpenAI, Gemini, Claude) for enterprise solutions</p>
+                    <div class="achievement-date">2024-2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Skills Visualization -->
+    <section id="skills-viz" class="skills-visualization">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Proficiency levels in cutting-edge technologies</p>
+            </div>
+            <div class="skills-viz-grid">
+                <div class="skill-circle-card">
+                    <div class="skill-circle" data-percentage="95">
+                        <div class="skill-circle-inner">
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <svg class="skill-circle-svg">
+                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Artificial Intelligence</h4>
+                        <p>Deep Learning, Neural Networks, Model Training</p>
+                    </div>
+                </div>
+                
+                <div class="skill-circle-card">
+                    <div class="skill-circle" data-percentage="92">
+                        <div class="skill-circle-inner">
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <svg class="skill-circle-svg">
+                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Multi-Agent Systems</h4>
+                        <p>LangGraph, Agent Orchestration, Workflow Design</p>
+                    </div>
+                </div>
+                
+                <div class="skill-circle-card">
+                    <div class="skill-circle" data-percentage="90">
+                        <div class="skill-circle-inner">
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <svg class="skill-circle-svg">
+                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                    </div>
+                    <div class="skill-info">
+                        <h4>RAG & LangChain</h4>
+                        <p>Vector Databases, Semantic Search, Knowledge Graphs</p>
+                    </div>
+                </div>
+                
+                <div class="skill-circle-card">
+                    <div class="skill-circle" data-percentage="88">
+                        <div class="skill-circle-inner">
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <svg class="skill-circle-svg">
+                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Python & FastAPI</h4>
+                        <p>Backend Development, API Design, Microservices</p>
+                    </div>
+                </div>
+                
+                <div class="skill-circle-card">
+                    <div class="skill-circle" data-percentage="85">
+                        <div class="skill-circle-inner">
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <svg class="skill-circle-svg">
+                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                    </div>
+                    <div class="skill-info">
+                        <h4>React & Frontend</h4>
+                        <p>Modern UI/UX, Component Architecture, State Management</p>
+                    </div>
+                </div>
+                
+                <div class="skill-circle-card">
+                    <div class="skill-circle" data-percentage="82">
+                        <div class="skill-circle-inner">
+                            <span class="skill-percentage">82%</span>
+                        </div>
+                        <svg class="skill-circle-svg">
+                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                    </div>
+                    <div class="skill-info">
+                        <h4>MLOps & DevOps</h4>
+                        <p>Model Deployment, CI/CD, Docker, Kubernetes</p>
                     </div>
                 </div>
             </div>
@@ -162,38 +446,92 @@
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Innovative AI solutions that push the boundaries of technology</p>
             </div>
+            
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
+                <button class="filter-btn" data-filter="web-dev">Web Development</button>
+                <button class="filter-btn" data-filter="devops">DevOps</button>
+                <button class="filter-btn" data-filter="automation">Automation</button>
+            </div>
+            
+            <!-- Project Search -->
+            <div class="project-search">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="project-search" placeholder="Search projects...">
+                </div>
+            </div>
             <div class="projects-grid">
-                <div class="project-card featured">
+                <div class="project-card featured" data-category="ai-ml automation">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-project-diagram"></i>
                         </div>
                         <div class="project-status">Featured</div>
                     </div>
-                    <h3 class="project-title">BuildPilot – Agentic MVP Generator with MCP</h3>
+                    <h3 class="project-title">🚀 DragAI - Agentic AI Workflow Platform</h3>
                     <p class="project-description">
-                        Autonomous platform that transforms user ideas into production-ready MVPs using LangGraph agents and FastMCP. 
-                        Integrates LLM-driven planning, code generation, and deployment pipelines with contextual understanding.
+                        Next-Generation Visual AI Orchestration System with 77+ pre-built nodes for AI, ML, RAG, and data. 
+                        Drag-and-drop platform for building intelligent multi-agent systems with no coding required.
                     </p>
+                    <div class="project-features">
+                        <div class="feature-item">🎨 Visual Workflow Builder</div>
+                        <div class="feature-item">🤖 Multi-LLM Support (OpenAI, Gemini, Claude)</div>
+                        <div class="feature-item">📚 RAG Integration with Vector DBs</div>
+                        <div class="feature-item">⚡ Real-Time Execution & Debug</div>
+                    </div>
                     <div class="project-tech">
-                        <span class="tech-tag">LangGraph</span>
-                        <span class="tech-tag">FastMCP</span>
-                        <span class="tech-tag">Multi-Agent</span>
-                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">MongoDB</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/bharathmrr/BuildPilot-Agentic-MVP-Generator-with-MCP" target="_blank" class="project-link">
+                        <a href="https://github.com/bharathmrr/Agentic-AI-Workflow-DragAI-Edition-" class="project-link">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
-                        <a href="https://github.com/bharathmrr/BuildPilot-Agentic-MVP-Generator-with-MCP" target="_blank" class="project-link">
+                        <a href="#" class="project-link">
                             <i class="fas fa-external-link-alt"></i>
-                            Repository
+                            Live Demo
                         </a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="ai-ml">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">AI-Powered Excel Analytics Platform</h3>
+                    <p class="project-description">
+                        Conversational AI platform that analyzes Excel data using natural language. 
+                        Upload any Excel file and ask questions like "What are sales trends by region?" to get instant AI insights with interactive charts.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Ollama</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/bharathmrr/AI-Data-Agent" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ai-ml">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-project-diagram"></i>
@@ -218,7 +556,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="ai-ml web-dev">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-magic"></i>
@@ -243,7 +581,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="devops automation">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-cloud"></i>
@@ -268,7 +606,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="ai-ml web-dev">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-comments"></i>
@@ -293,7 +631,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-category="ai-ml devops">
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-chart-line"></i>
@@ -321,14 +659,202 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Insights</h2>
+                <p class="section-subtitle">Thoughts on AI, technology trends, and industry innovations</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card featured">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop&crop=center" alt="AI Future" loading="lazy">
+                        <div class="blog-category">AI/ML</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fas fa-calendar"></i> Nov 2024</span>
+                            <span class="blog-read-time"><i class="fas fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3 class="blog-title">The Future of Multi-Agent AI Systems</h3>
+                        <p class="blog-excerpt">
+                            Exploring how autonomous AI agents are revolutionizing software development and business processes through 
+                            collaborative intelligence and distributed problem-solving capabilities.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Multi-Agent</span>
+                            <span class="blog-tag">AI Systems</span>
+                            <span class="blog-tag">Future Tech</span>
+                        </div>
+                        <a href="#" class="blog-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop&crop=center" alt="RAG Systems" loading="lazy">
+                        <div class="blog-category">Technical</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fas fa-calendar"></i> Oct 2024</span>
+                            <span class="blog-read-time"><i class="fas fa-clock"></i> 7 min read</span>
+                        </div>
+                        <h3 class="blog-title">Building Production-Ready RAG Systems</h3>
+                        <p class="blog-excerpt">
+                            A comprehensive guide to implementing Retrieval-Augmented Generation systems that scale, 
+                            from vector databases to knowledge graphs and beyond.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">RAG</span>
+                            <span class="blog-tag">LLM</span>
+                            <span class="blog-tag">Production</span>
+                        </div>
+                        <a href="#" class="blog-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop&crop=center" alt="DevOps AI" loading="lazy">
+                        <div class="blog-category">DevOps</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fas fa-calendar"></i> Sep 2024</span>
+                            <span class="blog-read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3 class="blog-title">AI-Driven DevOps: The Next Evolution</h3>
+                        <p class="blog-excerpt">
+                            How artificial intelligence is transforming DevOps practices, from automated infrastructure 
+                            provisioning to intelligent monitoring and self-healing systems.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">DevOps</span>
+                            <span class="blog-tag">Automation</span>
+                            <span class="blog-tag">AI</span>
+                        </div>
+                        <a href="#" class="blog-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="testimonials" class="contact-form-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss your next AI project or collaboration opportunity</p>
+            </div>
+            <div class="contact-form-container">
+                <div class="contact-form-card">
+                    <div class="form-header">
+                        <div class="form-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h3>Send me a message</h3>
+                        <p>I'll get back to you within 24 hours</p>
+                    </div>
+                    <form id="main-contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Your Name</label>
+                                <input type="text" id="contact-name" name="name" placeholder="Enter your full name" required>
+                                <div class="form-icon-input">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-email">Your Email</label>
+                                <input type="email" id="contact-email" name="email" placeholder="Enter your email address" required>
+                                <div class="form-icon-input">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-message">Your Message</label>
+                                <textarea id="contact-message" name="message" placeholder="Tell me about your project, collaboration ideas, or any questions you have..." rows="6" required></textarea>
+                                <div class="form-icon-input">
+                                    <i class="fas fa-comment-dots"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Contact Info Cards -->
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>bharathreddyget@gmail.com</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p>+91 9347294579</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Location</h4>
+                        <p>Andhra Pradesh, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">Building expertise through hands-on experience</p>
+                <p class="section-subtitle">From fresh graduate to AI specialist - 0 to 1+ years of focused expertise</p>
             </div>
             <div class="timeline">
+                <div class="timeline-item current">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>AI/ML Engineer & Financial Agent Specialist</h3>
+                            <span class="company">Freelance & Personal Projects</span>
+                            <span class="duration">June 2025 – Present</span>
+                        </div>
+                        <ul class="achievements">
+                            <li>Developed intelligent financial agents using LangChain and multi-agent systems</li>
+                            <li>Built automated trading analysis tools with 95% accuracy in market prediction</li>
+                            <li>Created portfolio management agents with risk assessment capabilities</li>
+                            <li>Implemented real-time financial data processing with RAG systems</li>
+                        </ul>
+                        <div class="experience-badge">Current Role</div>
+                    </div>
+                </div>
+                
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -341,9 +867,11 @@
                             <li>Designed and implemented data pipelines using Python to streamline analysis workflows</li>
                             <li>Built interactive dashboards reducing manual reporting time by 30%</li>
                             <li>Improved model accuracy by 12% through optimized feature engineering</li>
+                            <li>Specialized in financial data analysis and predictive modeling</li>
                         </ul>
                     </div>
                 </div>
+                
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -356,18 +884,26 @@
                             <li>Developed responsive web applications with modern JavaScript frameworks</li>
                             <li>Enhanced user engagement by 20% through improved interface design</li>
                             <li>Collaborated with UI/UX teams to optimize data presentation</li>
+                            <li>Built foundation for full-stack AI application development</li>
                         </ul>
                     </div>
                 </div>
-                <div class="timeline-item">
+                
+                <div class="timeline-item graduation">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-header">
-                            <h3>B.Tech Computer Science (AI/ML)</h3>
+                            <h3>B.Tech Computer Science (AI/ML) - Graduated</h3>
                             <span class="company">Siddharth Institute of Engineering</span>
-                            <span class="duration">2021 – 2025</span>
+                            <span class="duration">2021 – June 2025</span>
                         </div>
                         <div class="grade">CGPA: 8.62/10</div>
+                        <div class="graduation-badge">🎓 Fresh Graduate</div>
+                        <ul class="achievements">
+                            <li>Specialized in Artificial Intelligence and Machine Learning</li>
+                            <li>Completed capstone project on Speech Emotion Recognition</li>
+                            <li>Built strong foundation in algorithms, data structures, and AI systems</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -431,8 +967,11 @@
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
+                    <a href="#achievements">Achievements</a>
                     <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#testimonials">Contact</a>
                 </div>
             </div>
         </div>

@@ -1,7 +1,19 @@
-// Smooth scrolling for navigation links
+// Advanced Portfolio JavaScript with Professional Features
 document.addEventListener('DOMContentLoaded', function() {
-    // Create animated stars background
+    // Initialize all features
+    initializeTheme();
+    // initializeCustomCursor(); // Disabled
+    initializeScrollProgress();
     createStarsBackground();
+    initializeProjectFiltering();
+    initializeMainContactForm();
+    initializePerformanceMetrics();
+    initializeSkillsProgress();
+    initializeAchievementsAnimation();
+    // initializeStableTypingAnimation(); // Disabled - using simple name display
+    initializeAboutAnimations();
+    initializeCircularSkills();
+    initializeInteractiveFeatures();
     
     function createStarsBackground() {
         const starsContainer = document.getElementById('stars-container');
@@ -419,5 +431,635 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    console.log('🚀 Portfolio loaded successfully! Built with AI precision by Bharathsimha Reddy');
+    
+    // Theme Management
+    function initializeTheme() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Set initial theme
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Add transition effect
+            document.body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                document.body.style.transition = '';
+            }, 300);
+        });
+    }
+    
+    // Custom Cursor - Disabled
+    function initializeCustomCursor() {
+        // Custom cursor functionality disabled for better UX
+        return;
+    }
+    
+    // Scroll Progress Indicator
+    function initializeScrollProgress() {
+        const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
+        progressBar.innerHTML = '<div class="scroll-progress-bar"></div>';
+        document.body.appendChild(progressBar);
+        
+        const progressBarFill = progressBar.querySelector('.scroll-progress-bar');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            progressBarFill.style.width = scrollPercent + '%';
+        });
+    }
+    
+    // Project Filtering System
+    function initializeProjectFiltering() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const searchInput = document.getElementById('project-search');
+        
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active filter
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                filterProjects(filter, searchInput.value);
+            });
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            filterProjects(activeFilter, e.target.value);
+        });
+        
+        function filterProjects(category, searchTerm) {
+            projectCards.forEach(card => {
+                const cardCategories = card.getAttribute('data-category') || '';
+                const cardTitle = card.querySelector('.project-title').textContent.toLowerCase();
+                const cardDescription = card.querySelector('.project-description').textContent.toLowerCase();
+                
+                const matchesCategory = category === 'all' || cardCategories.includes(category);
+                const matchesSearch = searchTerm === '' || 
+                    cardTitle.includes(searchTerm.toLowerCase()) || 
+                    cardDescription.includes(searchTerm.toLowerCase());
+                
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'block';
+                    card.classList.remove('hidden');
+                    card.classList.add('visible');
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('visible');
+                    setTimeout(() => {
+                        if (card.classList.contains('hidden')) {
+                            card.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+        }
+    }
+    
+    // Main Contact Form Handler
+    function initializeMainContactForm() {
+        const mainForm = document.getElementById('main-contact-form');
+        if (mainForm) {
+            mainForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+                
+                // Get submit button
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                // Show loading state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.classList.add('form-loading');
+                submitBtn.disabled = true;
+                
+                // Create mailto link with form data
+                const subject = encodeURIComponent(`Portfolio Contact: Message from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+                const mailtoLink = `mailto:bharathreddyget@gmail.com?subject=${subject}&body=${body}`;
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    // Open email client
+                    window.location.href = mailtoLink;
+                    
+                    // Show success state
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Email Client Opened!';
+                    submitBtn.classList.remove('form-loading');
+                    submitBtn.classList.add('form-success');
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.classList.remove('form-success');
+                        submitBtn.disabled = false;
+                        this.reset();
+                    }, 3000);
+                }, 1500);
+            });
+        }
+    }
+    
+    
+    
+    // Performance Metrics Dashboard
+    function initializePerformanceMetrics() {
+        // Add GitHub stats and performance metrics
+        const aboutSection = document.querySelector('#about .about-content');
+        if (aboutSection && !document.querySelector('.performance-metrics')) {
+            const metricsHTML = `
+                <div class="performance-metrics">
+                    <h3><i class="fas fa-chart-bar"></i> Performance Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon"><i class="fab fa-github"></i></div>
+                            <div class="metric-value" data-target="25">0</div>
+                            <div class="metric-label">GitHub Repos</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon"><i class="fas fa-code-branch"></i></div>
+                            <div class="metric-value" data-target="150">0</div>
+                            <div class="metric-label">Commits</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon"><i class="fas fa-star"></i></div>
+                            <div class="metric-value" data-target="12">0</div>
+                            <div class="metric-label">Stars Earned</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon"><i class="fas fa-users"></i></div>
+                            <div class="metric-value" data-target="8">0</div>
+                            <div class="metric-label">Collaborations</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            aboutSection.insertAdjacentHTML('beforeend', metricsHTML);
+            
+            // Add metrics styles
+            const metricsStyles = `
+                .performance-metrics {
+                    background: var(--bg-card);
+                    padding: 2rem;
+                    border-radius: var(--border-radius-lg);
+                    box-shadow: var(--shadow-md);
+                    border: 1px solid var(--border-color);
+                    margin-top: 2rem;
+                }
+                
+                .performance-metrics h3 {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    margin-bottom: 1.5rem;
+                    color: var(--primary-color);
+                    font-size: 1.2rem;
+                }
+                
+                .metrics-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 1rem;
+                }
+                
+                .metric-card {
+                    text-align: center;
+                    padding: 1rem;
+                    background: var(--bg-secondary);
+                    border-radius: var(--border-radius-sm);
+                    border: 1px solid var(--border-color);
+                    transition: var(--transition-smooth);
+                }
+                
+                .metric-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: var(--shadow-md);
+                }
+                
+                .metric-icon {
+                    font-size: 1.5rem;
+                    color: var(--primary-color);
+                    margin-bottom: 0.5rem;
+                }
+                
+                .metric-value {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: var(--text-primary);
+                    margin-bottom: 0.25rem;
+                }
+                
+                .metric-label {
+                    font-size: 0.9rem;
+                    color: var(--text-secondary);
+                }
+            `;
+            
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = metricsStyles;
+            document.head.appendChild(styleSheet);
+            
+            // Animate metrics when visible
+            const metricsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateMetrics();
+                        metricsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const metricsSection = document.querySelector('.performance-metrics');
+            if (metricsSection) {
+                metricsObserver.observe(metricsSection);
+            }
+        }
+    }
+    
+    function animateMetrics() {
+        const metricValues = document.querySelectorAll('.metric-value');
+        metricValues.forEach(metric => {
+            const target = parseInt(metric.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 50;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    metric.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    metric.textContent = Math.floor(current);
+                }
+            }, 50);
+        });
+    }
+    
+    // Skills Progress Animation
+    function initializeSkillsProgress() {
+        const progressItems = document.querySelectorAll('.progress-item');
+        
+        const progressObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressFill = entry.target.querySelector('.progress-fill');
+                    const targetProgress = progressFill.getAttribute('data-progress');
+                    
+                    // Set CSS custom property for animation
+                    progressFill.style.setProperty('--target-width', targetProgress + '%');
+                    
+                    // Animate the progress bar
+                    setTimeout(() => {
+                        progressFill.style.width = targetProgress + '%';
+                    }, 100);
+                    
+                    // Add animation class
+                    entry.target.classList.add('animate');
+                    
+                    // Unobserve after animation
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        progressItems.forEach(item => {
+            progressObserver.observe(item);
+        });
+    }
+    
+    // Achievements Animation
+    function initializeAchievementsAnimation() {
+        const achievementCards = document.querySelectorAll('.achievement-card');
+        
+        const achievementsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger the animation
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                    
+                    achievementsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        // Set initial state
+        achievementCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            achievementsObserver.observe(card);
+        });
+    }
+    
+    // Typing Animation for Hero Title - Fixed Version
+    function initializeTypingAnimation() {
+        const typingElement = document.querySelector('.typing-text');
+        if (!typingElement) return;
+        
+        // Set fixed width to prevent page shaking
+        typingElement.style.minWidth = '600px';
+        typingElement.style.display = 'inline-block';
+        typingElement.style.textAlign = 'left';
+        
+        const texts = [
+            'Hi, I\'m Bharathsimha Reddy',
+            'AI/ML Engineer',
+            'Generative AI Specialist', 
+            'Multi-Agent Systems Expert',
+            'LangChain Developer'
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+        
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isPaused) {
+                setTimeout(typeWriter, 2000); // Longer pause to read
+                isPaused = false;
+                return;
+            }
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 30 : 80; // Slightly faster
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isPaused = true;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+            
+            setTimeout(typeWriter, typeSpeed);
+        }
+        
+        // Start with the name immediately visible
+        typingElement.textContent = 'Hi, I\'m Bharathsimha Reddy';
+        
+        // Start typing animation after showing name for 3 seconds
+        setTimeout(() => {
+            typeWriter();
+        }, 3000);
+    }
+    
+    // About Section Animations
+    function initializeAboutAnimations() {
+        const aboutCards = document.querySelectorAll('.about-card');
+        const skillCategories = document.querySelectorAll('.skill-category');
+        
+        const aboutObserver = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                    
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        // Set initial state and observe
+        [...aboutCards, ...skillCategories].forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            aboutObserver.observe(element);
+        });
+    }
+    
+    // Stable Typing Animation - No Page Shaking
+    function initializeStableTypingAnimation() {
+        const typingElement = document.querySelector('.typing-text');
+        if (!typingElement) {
+            console.log('Typing element not found');
+            return;
+        }
+        
+        // Ensure name is visible immediately
+        typingElement.textContent = 'Hi, I\'m Bharathsimha Reddy';
+        typingElement.style.visibility = 'visible';
+        typingElement.style.opacity = '1';
+        
+        console.log('Name set to:', typingElement.textContent);
+        
+        const texts = [
+            'Hi, I\'m Bharathsimha Reddy',
+            'AI/ML Engineer',
+            'Generative AI Specialist',
+            'Multi-Agent Systems Expert',
+            'LangChain Developer'
+        ];
+        
+        let textIndex = 0;
+        let charIndex = texts[0].length; // Start with full name
+        let isDeleting = false;
+        let isPaused = false;
+        
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isPaused) {
+                setTimeout(typeWriter, 2000);
+                isPaused = false;
+                return;
+            }
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isPaused = true;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+            
+            setTimeout(typeWriter, typeSpeed);
+        }
+        
+        // Start animation after 4 seconds to ensure name is visible
+        setTimeout(() => {
+            console.log('Starting typing animation');
+            typeWriter();
+        }, 4000);
+    }
+    
+    // Circular Skills Animation
+    function initializeCircularSkills() {
+        const skillCircles = document.querySelectorAll('.skill-circle');
+        
+        const skillsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const circle = entry.target;
+                    const percentage = parseInt(circle.getAttribute('data-percentage'));
+                    const progressCircle = circle.querySelector('.skill-circle-progress');
+                    const percentageText = circle.querySelector('.skill-percentage');
+                    
+                    // Calculate stroke-dashoffset based on percentage
+                    const circumference = 2 * Math.PI * 45; // radius = 45
+                    const offset = circumference - (percentage / 100) * circumference;
+                    
+                    // Animate the circle
+                    setTimeout(() => {
+                        progressCircle.style.strokeDashoffset = offset;
+                    }, 200);
+                    
+                    // Animate the percentage number
+                    let currentPercentage = 0;
+                    const increment = percentage / 60; // 60 frames for smooth animation
+                    
+                    const percentageTimer = setInterval(() => {
+                        currentPercentage += increment;
+                        if (currentPercentage >= percentage) {
+                            percentageText.textContent = percentage + '%';
+                            clearInterval(percentageTimer);
+                        } else {
+                            percentageText.textContent = Math.floor(currentPercentage) + '%';
+                        }
+                    }, 30);
+                    
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        skillCircles.forEach(circle => {
+            skillsObserver.observe(circle);
+        });
+    }
+    
+    // Interactive Features
+    function initializeInteractiveFeatures() {
+        // Add floating particles on hover
+        const skillCards = document.querySelectorAll('.skill-circle-card');
+        
+        skillCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                createFloatingParticles(this);
+            });
+        });
+        
+        // Add smooth scroll with offset for navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                const rate = scrolled * -0.5;
+                heroSection.style.transform = `translateY(${rate}px)`;
+            }
+        });
+        
+        // Add typing sound effect (visual feedback)
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    }
+    
+    function createFloatingParticles(element) {
+        for (let i = 0; i < 6; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'floating-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: var(--primary-color);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1000;
+                opacity: 0.8;
+            `;
+            
+            const rect = element.getBoundingClientRect();
+            particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+            particle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+            
+            document.body.appendChild(particle);
+            
+            // Animate particle
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 0.8 },
+                { transform: 'translateY(-50px)', opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => {
+                particle.remove();
+            };
+        }
+    }
+    
     console.log('🚀 Portfolio loaded successfully! Built with AI precision by Bharathsimha Reddy');
 });
