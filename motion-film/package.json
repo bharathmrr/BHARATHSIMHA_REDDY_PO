@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-motion-film",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Code-generated motion-graphics portfolio film (canvas + Playwright + ffmpeg)",
+  "scripts": { "build": "./build.sh", "preview": "npx serve ." },
+  "dependencies": {
+    "@fontsource/orbitron": "^5.0.0",
+    "@fontsource/rajdhani": "^5.0.0",
+    "@fontsource/share-tech-mono": "^5.0.0",
+    "playwright": "^1.45.0"
+  }
+}
