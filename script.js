@@ -114,6 +114,75 @@
             });
         };
     }
+    // ------------------------------------------------------------------ 3D network globe (fly-through on scroll)
+    window.__heroZoom = 0;
+    function makeNetwork(cv, { drag = false, n = 260, core = 110, speed = .12, zoomKey = null } = {}) {
+        const c2 = cv.getContext('2d'); let Wc = 0, Hc = 0, rx = -.25, ry = 0, vy = speed * .01, vx = 0, dragging = false, lx = 0, ly = 0;
+        const P = [];
+        for (let i = 0; i < n; i++) { const y = 1 - (i + .5) / n * 2, r = Math.sqrt(1 - y * y), th = i * 2.39996; P.push([Math.cos(th) * r, y, Math.sin(th) * r, 0]); }
+        let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+        for (let i = 0; i < core; i++) { let x, y, z; do { x = rnd() * 2 - 1; y = rnd() * 2 - 1; z = rnd() * 2 - 1; } while (x * x + y * y + z * z > .8); P.push([x, y, z, 1]); }
+        const E = [], seen = new Set();
+        P.forEach((a, i) => { const d = P.map((b, j) => [j, (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2]).filter(q => q[0] !== i).sort((p, q) => p[1] - q[1]).slice(0, a[3] ? 3 : 3);
+            d.forEach(([j]) => { const key = i < j ? i + '-' + j : j + '-' + i; if (!seen.has(key)) { seen.add(key); E.push([i, j]); } }); });
+        const PULSES = Array.from({ length: 70 }, (_, i) => ({ e: (i * 97) % E.length, o: i / 70, sp: .25 + (i % 7) * .06 }));
+        const size = () => { const r = cv.getBoundingClientRect(); Wc = cv.width = Math.round(r.width * DPR); Hc = cv.height = Math.round(r.height * DPR); };
+        if (drag) {
+            const down = e => { dragging = true; const p = e.touches ? e.touches[0] : e; lx = p.clientX; ly = p.clientY; };
+            const move = e => { if (!dragging) return; const p = e.touches ? e.touches[0] : e; vy = (p.clientX - lx) * .0035; vx = (p.clientY - ly) * .0035; lx = p.clientX; ly = p.clientY; };
+            cv.addEventListener('pointerdown', down); addEventListener('pointermove', move); addEventListener('pointerup', () => dragging = false);
+        }
+        size(); addEventListener('resize', size);
+        const S = []; // projected
+        return t => {
+            if (!Wc) return;
+            ry += vy; rx += vx; if (!dragging) { vy += (speed * .01 - vy) * .02; vx *= .94; rx += (-.25 - rx) * .01; }
+            const z = zoomKey ? clamp(window[zoomKey] || 0) : 0, ze = z * z * (3 - 2 * z);
+            const cam = 3.4 - 3.25 * ze;                       // camera distance: outside → through the core
+            const FOV = Math.min(Wc, Hc) * .34 * 3.4;           // sphere radius ≈ 34% of the short side at rest
+            const cx = Wc / 2, cy = Hc / 2, cyr = Math.cos(ry), syr = Math.sin(ry), cxr = Math.cos(rx), sxr = Math.sin(rx);
+            c2.clearRect(0, 0, Wc, Hc);
+            for (let i = 0; i < P.length; i++) {
+                const [x, y, zz] = P[i]; const x1 = x * cyr - zz * syr, z1 = x * syr + zz * cyr, y2 = y * cxr - z1 * sxr, z2 = y * sxr + z1 * cxr;
+                const d = z2 + cam; if (d < .06) { S[i] = null; continue; }
+                const f = FOV / d; S[i] = [cx + x1 * f, cy + y2 * f, f / FOV, z2, x1];
+            }
+            const fade = 1 - clamp((ze - .82) / .18);
+            // edges
+            c2.lineWidth = Math.max(1, DPR * .9);
+            for (const [a, b] of E) {
+                const A = S[a], B = S[b]; if (!A || !B) continue;
+                const depth = (A[2] + B[2]) / 2, al = clamp(.05 + depth * .55 * (1.2 - (A[3] + B[3]) / 4)) * fade;
+                if (al < .02) continue; const u = (A[4] + 1) / 2;
+                c2.strokeStyle = u < .5 ? mix(C.cy, C.in, u * 2) : mix(C.in, C.pk, (u - .5) * 2); c2.globalAlpha = al;
+                c2.beginPath(); c2.moveTo(A[0], A[1]); c2.lineTo(B[0], B[1]); c2.stroke();
+            }
+            // nodes
+            c2.globalCompositeOperation = 'lighter';
+            for (let i = 0; i < P.length; i++) {
+                const p = S[i]; if (!p) continue; const u = (p[4] + 1) / 2, front = (p[3] + 1) / 2;
+                const r = Math.max(.8, (P[i][3] ? 1.5 : 2.2) * p[2] * 3.4 * DPR);
+                c2.fillStyle = u < .5 ? mix(C.cy, C.in, u * 2) : mix(C.in, C.pk, (u - .5) * 2);
+                c2.globalAlpha = (.25 + .75 * front) * fade; c2.beginPath(); c2.arc(p[0], p[1], r, 0, 6.283); c2.fill();
+                if (i % 9 === 0) { c2.globalAlpha = .18 * front * fade; c2.beginPath(); c2.arc(p[0], p[1], r * 3.2, 0, 6.283); c2.fill(); }
+            }
+            // pulses travelling along links
+            for (const q of PULSES) {
+                const [a, b] = E[q.e]; const A = S[a], B = S[b]; if (!A || !B) continue;
+                const k = (q.o + t * q.sp) % 1; const x = A[0] + (B[0] - A[0]) * k, y = A[1] + (B[1] - A[1]) * k, sc = A[2] + (B[2] - A[2]) * k;
+                c2.fillStyle = '#ffffff'; c2.globalAlpha = .9 * fade; c2.beginPath(); c2.arc(x, y, Math.max(1, 2.2 * sc * 3.4 * DPR), 0, 6.283); c2.fill();
+                if (k > .97) q.e = (q.e * 31 + 17) % E.length;
+            }
+            c2.globalCompositeOperation = 'source-over';
+            // orbit rings (only while outside)
+            const R0 = FOV / cam, ra = 1 - clamp(ze * 1.6);
+            if (ra > 0) [[1.28, .3, .25, C.cy], [1.42, .36, -.18, C.vi], [1.6, .42, .12, C.pk]].forEach(([k2, e, sp, col], i) => {
+                c2.save(); c2.translate(cx, cy); c2.rotate(t * sp + i); c2.globalAlpha = .35 * ra; c2.strokeStyle = col; c2.lineWidth = 1.2 * DPR; c2.beginPath(); c2.ellipse(0, 0, R0 * k2, R0 * k2 * e, 0, 0, 6.283); c2.stroke();
+                const an = t * (.6 + i * .2); c2.globalAlpha = .9 * ra; c2.fillStyle = col; c2.beginPath(); c2.arc(Math.cos(an) * R0 * k2, Math.sin(an) * R0 * k2 * e, 3.2 * DPR, 0, 6.283); c2.fill(); c2.restore();
+            });
+            c2.globalAlpha = 1;
+        };
+    }
     const hexRGB = h => { const n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; };
     const mix = (a, b, k) => { const A = hexRGB(a), B = hexRGB(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * k)).join(',')})`; };
 
@@ -323,7 +392,7 @@
 
     // ------------------------------------------------------------------ main loop
     const LITE = innerWidth < 760 || (navigator.hardwareConcurrency || 8) <= 4;
-    const sphere1 = makeSphere($('#sphere'), { drag: true, n: LITE ? 650 : 1200 }), sphere2 = makeSphere($('#sphere2'), { n: LITE ? 450 : 900, speed: .08 });
+    const sphere1 = makeNetwork($('#sphere'), { drag: true, n: LITE ? 170 : 280, core: LITE ? 60 : 130, zoomKey: '__heroZoom' }), sphere2 = makeNetwork($('#sphere2'), { n: LITE ? 140 : 220, core: LITE ? 40 : 80, speed: .08 });
     const heroSec = $('#hero'), contactSec = $('#contact');
     const onScreen = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
     let frameN = 0;
@@ -399,11 +468,12 @@
     const mm = gsap.matchMedia();
     mm.add('(min-width: 901px)', () => {
         // HERO — the name splits apart, sphere zooms through
-        const hero = gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=90%', scrub: 1, pin: true, pinSpacing: true } });
+        const zoom = { v: 0 };
+        const hero = gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=150%', scrub: 1, pin: true, pinSpacing: true } });
         hero.fromTo('.hero-name .solid', { xPercent: 0, yPercent: 0, opacity: 1 }, { xPercent: -28, yPercent: -40, opacity: 0, ease: 'none' }, 0)
             .fromTo('.hero-name .light', { xPercent: 0, yPercent: 0, opacity: 1 }, { xPercent: 28, yPercent: 40, opacity: 0, ease: 'none' }, 0)
             .fromTo('.kicker, .hero-role, .hero-tags, .hero-rot, .hero-cta', { y: 0, opacity: 1 }, { y: -80, opacity: 0, ease: 'none', immediateRender: false }, 0)
-            .to('#sphere', { scale: 2.4, opacity: 0, ease: 'power1.in' }, 0)
+            .to(zoom, { v: 1, duration: 1, ease: 'none', onUpdate: () => { window.__heroZoom = zoom.v; } }, 0)
             .to('.hero-foot', { opacity: 0, ease: 'none' }, 0);
 
         // MANIFESTO — light words one by one
