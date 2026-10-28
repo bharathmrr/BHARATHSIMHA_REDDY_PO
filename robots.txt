@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bharathmrr.github.io/BHARATHSIMHA_REDDY_PO/sitemap.xml

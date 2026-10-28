@@ -10,6 +10,26 @@
     <meta property="og:description" content="AI that understands context, talks to real business systems and gets the work done.">
     <meta property="og:image" content="motion-film/poster.jpg">
     <meta name="theme-color" content="#04050b">
+    <link rel="canonical" href="https://bharathmrr.github.io/BHARATHSIMHA_REDDY_PO/">
+    <meta property="og:url" content="https://bharathmrr.github.io/BHARATHSIMHA_REDDY_PO/">
+    <meta property="og:type" content="profile">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bharathsimha Reddy Putta",
+      "jobTitle": "Automation, AI & ML Engineer",
+      "worksFor": { "@type": "Organization", "name": "Jane" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+      "email": "mailto:bharathreddyget@gmail.com",
+      "url": "https://bharathmrr.github.io/BHARATHSIMHA_REDDY_PO/",
+      "sameAs": ["https://github.com/bharathmrr", "https://www.linkedin.com/in/bharathsimha-reddy-putta-a2292a211/"],
+      "alumniOf": "Siddharth Institute of Engineering",
+      "knowsAbout": ["Generative AI", "Agentic AI", "Voice AI", "LangGraph", "LangChain", "Model Context Protocol", "RAG", "FastAPI", "Machine Learning", "Enterprise automation"]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -17,6 +37,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip" href="#about">Skip to content</a>
     <canvas id="bg" aria-hidden="true"></canvas>
     <div class="progress" id="progress"></div>
 
@@ -32,14 +53,14 @@
             <a href="#stack" data-sec="stack">Stack</a>
             <a href="#contact" data-sec="contact">Contact</a>
         </div>
-        <div class="nav-index mono" id="nav-index">00 — INTRO</div>
+        <div class="nav-right"><span class="nav-index mono" id="nav-index">00 — INTRO</span><a class="nav-cv mono" href="assets/Bharathsimha_Reddy_Putta_Resume.pdf" download>RÉSUMÉ ↓</a></div>
         <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
     </nav>
 
     <main>
         <!-- 00 HERO -->
         <section id="hero" class="hero" data-label="00 — INTRO">
-            <canvas id="sphere" class="hero-sphere" aria-label="Interactive sphere — drag to rotate"></canvas>
+            <canvas id="sphere" class="hero-sphere" role="img" aria-label="Interactive 3D sphere — drag to rotate"></canvas>
             <div class="hero-inner">
                 <div class="kicker mono reveal"><span class="kline"></span>PORTFOLIO · 2026<span class="kline"></span></div>
                 <h1 class="hero-name">
@@ -49,6 +70,10 @@
                 <p class="hero-role reveal">AUTOMATION, AI &amp; ML ENGINEER</p>
                 <p class="hero-tags mono reveal">AGENTIC AI &nbsp;·&nbsp; VOICE AI &nbsp;·&nbsp; ENTERPRISE AUTOMATION &nbsp;·&nbsp; GENERATIVE AI</p>
                 <div class="hero-rot reveal"><span id="rot">Beyond the chatbox.</span></div>
+                <div class="hero-cta reveal">
+                    <a class="hbtn primary" href="#featured">View projects</a>
+                    <a class="hbtn" href="assets/Bharathsimha_Reddy_Putta_Resume.pdf" download>Download résumé ↓</a>
+                </div>
             </div>
             <div class="hero-foot mono">
                 <a href="#about" class="scroll"><span class="scroll-line"></span>SCROLL</a>
@@ -73,8 +98,8 @@
                 <div class="eyebrow mono reveal">BY THE NUMBERS</div>
                 <h2 class="h2 reveal">Building AI that runs <span class="grad">real business workflows.</span></h2>
                 <div class="impact-grid">
-                    <article class="icard reveal"><span class="ino mono">01</span><div class="inum"><span data-count="10">0</span></div><p>Enterprise AI platforms shipped at Jane &amp; Aiqwip</p></article>
-                    <article class="icard reveal"><span class="ino mono">02</span><div class="inum"><span data-count="78">0</span></div><p>GitHub repositories — agents, RAG, MLOps, voice</p></article>
+                    <article class="icard reveal"><span class="ino mono">01</span><div class="inum"><span data-count="8">0</span></div><p>Enterprise AI platforms built with the Jane &amp; Aiqwip teams</p></article>
+                    <article class="icard reveal"><span class="ino mono">02</span><div class="inum"><span data-count="2">0</span>+</div><p>Years building AI — from freelance to enterprise</p></article>
                     <article class="icard reveal"><span class="ino mono">03</span><div class="inum"><span data-count="20">0</span>+</div><p>CRM platforms integrated through MCP tools</p></article>
                     <article class="icard reveal"><span class="ino mono">04</span><div class="inum"><span data-count="77">0</span>+</div><p>Drag-and-drop AI nodes built into DragAI</p></article>
                 </div>
@@ -114,7 +139,7 @@
                 <div class="wrap more-head">
                     <div>
                         <div class="eyebrow mono">BEYOND THE FEATURED</div>
-                        <h2 class="h2">More systems I've shipped.</h2>
+                        <h2 class="h2">More systems I've built.</h2>
                     </div>
                     <div class="more-count mono"><span id="more-cur">01</span> / <span id="more-tot">16</span></div>
                 </div>
@@ -169,6 +194,7 @@
                     <button class="cbtn" id="copy-email" data-email="bharathreddyget@gmail.com"><span class="ci">✉</span><span>bharathreddyget@gmail.com</span><span class="mono copy" id="copy-label">COPY</span></button>
                     <a class="cbtn" href="https://github.com/bharathmrr" target="_blank" rel="noopener"><span class="ci">↗</span><span>github.com/bharathmrr</span></a>
                     <a class="cbtn" href="https://www.linkedin.com/in/bharathsimha-reddy-putta-a2292a211/" target="_blank" rel="noopener"><span class="ci">in</span><span>LinkedIn</span></a>
+                    <a class="cbtn" href="assets/Bharathsimha_Reddy_Putta_Resume.pdf" download><span class="ci">↓</span><span>Résumé (PDF)</span></a>
                 </div>
             </div>
         </section>

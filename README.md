@@ -2,6 +2,8 @@
 
 Automation, AI & ML Engineer · Generative AI · Agentic AI · Voice AI · Bengaluru, India
 
+📄 **[Download résumé (PDF)](assets/Bharathsimha_Reddy_Putta_Resume.pdf)** · 🌐 **[Live site](https://bharathmrr.github.io/BHARATHSIMHA_REDDY_PO/)**
+
 A cinematic, scroll-driven single-page portfolio: aurora night sky, cyan → indigo → pink gradient type, glass panels, smooth inertia scrolling (Lenis) and scroll-scrubbed animation (GSAP ScrollTrigger).
 
 ## Sections
@@ -16,12 +18,13 @@ A cinematic, scroll-driven single-page portfolio: aurora night sky, cyan → ind
 | 05 | More work | Pinned horizontal gallery of 16 systems; cards tilt with scroll speed |
 | 06 | Stack | Tool rows that speed up with scrolling (hover to pause) |
 | 07 | Education | B.Tech and early career |
-| 08 | Contact | Name grows into view; copy-to-clipboard email |
+| 08 | Contact | Name grows into view; copy-to-clipboard email and résumé download |
 
 ## Files
 
 - `index.html`, `styles.css`, `script.js` — the site (no build step, no frameworks)
-- `assets/img/` — product screens for the featured projects
+- `assets/img/` — concept UI screens for the featured projects (labelled on the site as illustrative)
+- `assets/Bharathsimha_Reddy_Putta_Resume.pdf` — résumé
 - `assets/js/viz.js` — live drawing components (globe, call transcript, funnel, node canvas…) shared with the motion film
 - `assets/vendor/` — GSAP + ScrollTrigger and Lenis, served locally
 - `assets/fonts/`, `motion-film/fonts/` — Geist Mono and Inter / Inter Display (SIL OFL)
