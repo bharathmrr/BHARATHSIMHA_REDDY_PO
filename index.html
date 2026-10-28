@@ -3,1228 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bharathsimha Reddy Putta - AI/ML Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Bharathsimha Reddy Putta — Automation, AI &amp; ML Engineer</title>
+    <meta name="description" content="Bharathsimha Reddy Putta — Automation, AI & ML Engineer at Jane. AI agents, real-time voice AI and enterprise automation platforms. 78 GitHub repositories.">
+    <meta name="author" content="Bharathsimha Reddy Putta">
+    <meta property="og:title" content="Bharathsimha Reddy Putta — Automation, AI & ML Engineer">
+    <meta property="og:description" content="AI that understands context, talks to real business systems and gets the work done.">
+    <meta property="og:image" content="motion-film/poster.jpg">
+    <meta name="theme-color" content="#04050b">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="theme-color" content="#6366f1">
-    <meta name="description" content="Bharathsimha Reddy Putta - AI/ML Engineer specializing in Generative AI, Multi-Agent Systems, and cutting-edge technology solutions">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Stars Background -->
-    <div class="stars" id="stars-container"></div>
-    
-    <!-- SVG Definitions -->
-    <svg width="0" height="0" style="position: absolute;">
-        <defs>
-            <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
-            </linearGradient>
-        </defs>
-    </svg>
-    
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-trail" id="cursor-trail"></div>
-    
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="theme-toggle">
-        <i class="fas fa-sun"></i>
-        <i class="fas fa-moon"></i>
-    </div>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Bharath<span class="highlight">AI</span></span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li><a href="#showreel" class="nav-link">Showreel</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#blog" class="nav-link">Blog</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#testimonials" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div class="progress" id="progress"></div>
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+        <a href="#hero" class="brand"><span class="brand-mark">BRP</span><span class="brand-name">BHARATHSIMHA REDDY PUTTA</span></a>
+        <div class="nav-links" id="nav-links">
+            <a href="#impact" data-sec="impact">Impact</a>
+            <a href="#exp" data-sec="exp">Experience</a>
+            <a href="#featured" data-sec="featured">Projects</a>
+            <a href="#reel" data-sec="reel">Showreel</a>
+            <a href="#more" data-sec="more">More</a>
+            <a href="#stack" data-sec="stack">Stack</a>
+            <a href="#contact" data-sec="contact">Contact</a>
         </div>
+        <div class="nav-index mono" id="nav-index">00 — INTRO</div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span></button>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Hi, I'm Bharathsimha Reddy
-                    </h1>
-                    <h2 class="hero-subtitle">AI/ML Engineer & Generative AI Specialist</h2>
-                    <p class="hero-description">
-                        Transforming ideas into intelligent solutions with Deep Learning, NLP, Computer Vision, 
-                        and cutting-edge Generative AI technologies. Building the future, one algorithm at a time.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i>
-                            View My Work
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i>
-                            Get In Touch
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number">15+</span>
-                            <span class="stat-label">AI Projects</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">2+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-label">Client Satisfaction</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">25+</span>
-                            <span class="stat-label">Technologies</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Professional Badges -->
-                    <div class="professional-badges">
-                        <div class="badge">
-                            <i class="fas fa-award"></i>
-                            <span>AI Specialist</span>
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-certificate"></i>
-                            <span>MLOps Certified</span>
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-star"></i>
-                            <span>Top Performer</span>
-                        </div>
-                    </div>
+    <main>
+        <!-- 00 HERO -->
+        <section id="hero" class="hero" data-label="00 — INTRO">
+            <canvas id="sphere" class="hero-sphere" aria-label="Interactive sphere — drag to rotate"></canvas>
+            <div class="hero-inner">
+                <div class="kicker mono reveal"><span class="kline"></span>PORTFOLIO · 2026<span class="kline"></span></div>
+                <h1 class="hero-name">
+                    <span class="split solid" data-split>Bharathsimha</span>
+                    <span class="split grad light" data-split>Reddy Putta</span>
+                </h1>
+                <p class="hero-role reveal">AUTOMATION, AI &amp; ML ENGINEER</p>
+                <p class="hero-tags mono reveal">AGENTIC AI &nbsp;·&nbsp; VOICE AI &nbsp;·&nbsp; ENTERPRISE AUTOMATION &nbsp;·&nbsp; GENERATIVE AI</p>
+                <div class="hero-rot reveal"><span id="rot">Beyond the chatbox.</span></div>
+            </div>
+            <div class="hero-foot mono">
+                <a href="#impact" class="scroll"><span class="scroll-line"></span>SCROLL</a>
+                <span class="drag">DRAG THE SPHERE ↻</span>
+            </div>
+        </section>
+
+        <!-- 01 IMPACT -->
+        <section id="impact" class="pad" data-label="01 — IMPACT">
+            <div class="wrap">
+                <div class="eyebrow mono reveal">BY THE NUMBERS</div>
+                <h2 class="h2 reveal">Building AI that runs <span class="grad">real business workflows.</span></h2>
+                <div class="impact-grid">
+                    <article class="icard reveal"><span class="ino mono">01</span><div class="inum"><span data-count="10">0</span></div><p>Enterprise AI platforms shipped at Jane &amp; Aiqwip</p></article>
+                    <article class="icard reveal"><span class="ino mono">02</span><div class="inum"><span data-count="78">0</span></div><p>GitHub repositories — agents, RAG, MLOps, voice</p></article>
+                    <article class="icard reveal"><span class="ino mono">03</span><div class="inum"><span data-count="20">0</span>+</div><p>CRM platforms integrated through MCP tools</p></article>
+                    <article class="icard reveal"><span class="ino mono">04</span><div class="inum"><span data-count="77">0</span>+</div><p>Drag-and-drop AI nodes built into DragAI</p></article>
                 </div>
-                <div class="hero-visual">
-                    <div class="ai-animation">
-                        <div class="neural-network">
-                            <div class="node"></div>
-                            <div class="node"></div>
-                            <div class="node"></div>
-                            <div class="node"></div>
-                            <div class="connection"></div>
-                            <div class="connection"></div>
-                            <div class="connection"></div>
+            </div>
+        </section>
+
+        <!-- 02 EXPERIENCE -->
+        <section id="exp" class="exp" data-label="02 — EXPERIENCE">
+            <div class="exp-sticky">
+                <div class="wrap">
+                    <div class="exp-head">
+                        <div>
+                            <div class="eyebrow mono">EXPERIENCE</div>
+                            <h2 class="h2">Where I've built.</h2>
                         </div>
+                        <span class="hint mono">SCROLL, OR CLICK A ROLE</span>
+                    </div>
+                    <div class="exp-grid">
+                        <ol class="exp-list" id="exp-list"></ol>
+                        <div class="exp-card" id="exp-card"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate about AI innovation and practical solutions</p>
+        <!-- 03 FEATURED -->
+        <section id="featured" class="featured" data-label="03 — PROJECTS">
+            <div class="band band-outline" aria-hidden="true"><div class="band-track" data-band="FEATURED"></div></div>
+            <div class="band band-fill" aria-hidden="true"><div class="band-track rev" data-band="PROJECTS"></div></div>
+            <p class="band-caption mono reveal">SELECTED WORK &nbsp;·&nbsp; <a href="https://github.com/bharathmrr" target="_blank" rel="noopener">GITHUB.COM/BHARATHMRR</a></p>
+        </section>
+        <div id="projects"></div>
+
+        <!-- SHOWREEL -->
+        <section id="reel" class="pad" data-label="04 — SHOWREEL">
+            <div class="wrap">
+                <div class="eyebrow mono reveal">MOTION FILM · 4:52</div>
+                <h2 class="h2 reveal">The <span class="grad">showreel.</span></h2>
+                <div class="reel reveal">
+                    <div class="dev-bar"><i></i><i></i><i></i><span class="mono">portfolio-film.mp4</span></div>
+                    <video controls preload="metadata" playsinline poster="motion-film/poster.jpg">
+                        <source src="motion-film/portfolio-film.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="note reveal">Generated entirely from code — canvas animation, frame capture and a synthesised score. <a href="motion-film/">How it's built →</a></p>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="about-card">
-                        <h3>My Mission</h3>
-                        <p>
-                            To democratize AI technology by building intelligent, scalable solutions that solve real-world problems. 
-                            I specialize in creating multi-agent systems, RAG applications, and generative AI platforms that 
-                            transform how businesses operate and innovate.
-                        </p>
-                    </div>
-                    <div class="about-card">
-                        <h3>What I Do</h3>
-                        <p>
-                            I design and implement cutting-edge AI systems using the latest in machine learning, natural language processing, 
-                            and computer vision. From autonomous research agents to interactive knowledge graphs, 
-                            I turn complex AI concepts into production-ready applications.
-                        </p>
-                    </div>
+        </section>
+
+        <!-- 05 MORE -->
+        <section id="more" class="pad" data-label="05 — MORE WORK">
+            <div class="wrap">
+                <div class="eyebrow mono reveal">BEYOND THE FEATURED</div>
+                <h2 class="h2 reveal">More systems I've shipped.</h2>
+                <div class="more-grid" id="more-grid"></div>
+            </div>
+        </section>
+
+        <!-- 06 STACK -->
+        <section id="stack" class="stack" data-label="06 — STACK">
+            <div class="wrap center">
+                <div class="eyebrow mono reveal">TOOLBOX</div>
+                <h2 class="h1 reveal">The <span class="grad">Stack</span></h2>
+                <p class="hint mono reveal">HOVER A ROW TO PAUSE IT</p>
+            </div>
+            <div class="stack-rows" id="stack-rows"></div>
+        </section>
+
+        <!-- 07 EDUCATION -->
+        <section id="edu" class="pad" data-label="07 — EDUCATION">
+            <div class="wrap">
+                <div class="eyebrow mono reveal">FOUNDATIONS</div>
+                <h2 class="h2 reveal">Education &amp; early career.</h2>
+                <div class="edu-grid">
+                    <article class="ecard reveal">
+                        <div class="eyebrow mono">EDUCATION</div>
+                        <h3>B.Tech — Computer Science (AI &amp; ML)</h3>
+                        <p class="esub">Siddharth Institute of Engineering</p>
+                        <p class="mono edate">2021 — 2025</p>
+                        <p class="emeta">CGPA 8.62 / 10 &nbsp;·&nbsp; Capstone: Speech Emotion Recognition</p>
+                    </article>
+                    <article class="ecard reveal">
+                        <div class="eyebrow mono">EARLY CAREER</div>
+                        <h3>Internships &amp; freelance</h3>
+                        <p class="esub">Data Scientist Intern · EISystems Technologies</p>
+                        <p class="esub">Web Developer Intern · VaultofCodes</p>
+                        <p class="emeta">Freelance AI/ML engineer, Apr 2024 — Oct 2025</p>
+                    </article>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4><i class="fas fa-brain"></i> AI/ML</h4>
-                        <div class="skills">
-                            <span class="skill-tag">Deep Learning</span>
-                            <span class="skill-tag">NLP</span>
-                            <span class="skill-tag">Computer Vision</span>
-                            <span class="skill-tag">Generative AI</span>
-                            <span class="skill-tag">RAG</span>
-                            <span class="skill-tag">LLMOps</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4><i class="fas fa-code"></i> Frameworks</h4>
-                        <div class="skills">
-                            <span class="skill-tag">TensorFlow</span>
-                            <span class="skill-tag">LangChain</span>
-                            <span class="skill-tag">LangGraph</span>
-                            <span class="skill-tag">MLFlow</span>
-                            <span class="skill-tag">FastAPI</span>
-                            <span class="skill-tag">React</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <div class="skills-category">
-                            <h4>Cloud & DevOps</h4>
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Kubernetes</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="chips-marquee reveal"><div class="cm-track" id="focus-track"></div></div>
+            </div>
+        </section>
 
-                <!-- Professional Skills Progress -->
-                <div class="skills-progress">
-                    <h3>Core Expertise Levels</h3>
-                    <div class="progress-grid">
-                        <div class="progress-item">
-                            <div class="progress-header">
-                                <span class="progress-label">Artificial Intelligence & ML</span>
-                                <span class="progress-percentage">95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" data-progress="95"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress-item">
-                            <div class="progress-header">
-                                <span class="progress-label">Multi-Agent Systems</span>
-                                <span class="progress-percentage">92%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" data-progress="92"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress-item">
-                            <div class="progress-header">
-                                <span class="progress-label">LangChain & RAG</span>
-                                <span class="progress-percentage">90%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" data-progress="90"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress-item">
-                            <div class="progress-header">
-                                <span class="progress-label">Python & FastAPI</span>
-                                <span class="progress-percentage">88%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" data-progress="88"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress-item">
-                            <div class="progress-header">
-                                <span class="progress-label">React & Frontend</span>
-                                <span class="progress-percentage">85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" data-progress="85"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress-item">
-                            <div class="progress-header">
-                                <span class="progress-label">MLOps & Deployment</span>
-                                <span class="progress-percentage">82%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" data-progress="82"></div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- 08 CONTACT -->
+        <section id="contact" class="contact" data-label="08 — CONTACT">
+            <canvas id="sphere2" class="contact-sphere" aria-hidden="true"></canvas>
+            <div class="wrap center contact-inner">
+                <p class="contact-lead reveal">Let's build something intelligent.</p>
+                <h2 class="contact-name"><span class="split grad" data-split>Bharathsimha Reddy Putta</span></h2>
+                <p class="mono contact-meta reveal">AUTOMATION, AI &amp; ML ENGINEER &nbsp;·&nbsp; BENGALURU, INDIA</p>
+                <div class="contact-btns reveal">
+                    <button class="cbtn" id="copy-email" data-email="bharathreddyget@gmail.com"><span class="ci">✉</span><span>bharathreddyget@gmail.com</span><span class="mono copy" id="copy-label">COPY</span></button>
+                    <a class="cbtn" href="https://github.com/bharathmrr" target="_blank" rel="noopener"><span class="ci">↗</span><span>github.com/bharathmrr</span></a>
+                    <a class="cbtn" href="https://www.linkedin.com/in/bharathsimha-reddy-putta-a2292a211/" target="_blank" rel="noopener"><span class="ci">in</span><span>LinkedIn</span></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Achievements & Certifications Section -->
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Achievements & Recognition</h2>
-                <p class="section-subtitle">Professional milestones and industry recognition</p>
-            </div>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>AI Innovation Award</h3>
-                    <p>Recognized for developing cutting-edge multi-agent AI systems with 95% efficiency improvement</p>
-                    <div class="achievement-date">2025</div>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3>MLOps Excellence</h3>
-                    <p>Certified in advanced MLOps practices with expertise in model deployment and monitoring</p>
-                    <div class="achievement-date">2024</div>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>AI/ML Specialization</h3>
-                    <p>Advanced certification in Artificial Intelligence and Machine Learning from leading institutions</p>
-                    <div class="achievement-date">2024</div>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <h3>Open Source Contributor</h3>
-                    <p>Active contributor to AI/ML open source projects with 25+ repositories and growing community</p>
-                    <div class="achievement-date">Ongoing</div>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Rapid Prototyping Expert</h3>
-                    <p>Specialized in delivering MVP solutions in under 5 minutes with 90% functional accuracy</p>
-                    <div class="achievement-date">2025</div>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>LLM Integration Specialist</h3>
-                    <p>Expert in integrating multiple LLMs (OpenAI, Gemini, Claude) for enterprise solutions</p>
-                    <div class="achievement-date">2024-2025</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <footer class="footer mono">© 2026 BHARATHSIMHA REDDY PUTTA &nbsp;·&nbsp; DESIGNED &amp; BUILT IN CODE</footer>
 
-    <!-- Advanced Skills Visualization -->
-    <section id="skills-viz" class="skills-visualization">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Expertise</h2>
-                <p class="section-subtitle">Proficiency levels in cutting-edge technologies</p>
-            </div>
-            <div class="skills-viz-grid">
-                <div class="skill-circle-card">
-                    <div class="skill-circle" data-percentage="95">
-                        <div class="skill-circle-inner">
-                            <span class="skill-percentage">95%</span>
-                        </div>
-                        <svg class="skill-circle-svg">
-                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                    </div>
-                    <div class="skill-info">
-                        <h4>Artificial Intelligence</h4>
-                        <p>Deep Learning, Neural Networks, Model Training</p>
-                    </div>
-                </div>
-                
-                <div class="skill-circle-card">
-                    <div class="skill-circle" data-percentage="92">
-                        <div class="skill-circle-inner">
-                            <span class="skill-percentage">92%</span>
-                        </div>
-                        <svg class="skill-circle-svg">
-                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                    </div>
-                    <div class="skill-info">
-                        <h4>Multi-Agent Systems</h4>
-                        <p>LangGraph, Agent Orchestration, Workflow Design</p>
-                    </div>
-                </div>
-                
-                <div class="skill-circle-card">
-                    <div class="skill-circle" data-percentage="90">
-                        <div class="skill-circle-inner">
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <svg class="skill-circle-svg">
-                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                    </div>
-                    <div class="skill-info">
-                        <h4>RAG & LangChain</h4>
-                        <p>Vector Databases, Semantic Search, Knowledge Graphs</p>
-                    </div>
-                </div>
-                
-                <div class="skill-circle-card">
-                    <div class="skill-circle" data-percentage="88">
-                        <div class="skill-circle-inner">
-                            <span class="skill-percentage">88%</span>
-                        </div>
-                        <svg class="skill-circle-svg">
-                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                    </div>
-                    <div class="skill-info">
-                        <h4>Python & FastAPI</h4>
-                        <p>Backend Development, API Design, Microservices</p>
-                    </div>
-                </div>
-                
-                <div class="skill-circle-card">
-                    <div class="skill-circle" data-percentage="85">
-                        <div class="skill-circle-inner">
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <svg class="skill-circle-svg">
-                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                    </div>
-                    <div class="skill-info">
-                        <h4>React & Frontend</h4>
-                        <p>Modern UI/UX, Component Architecture, State Management</p>
-                    </div>
-                </div>
-                
-                <div class="skill-circle-card">
-                    <div class="skill-circle" data-percentage="82">
-                        <div class="skill-circle-inner">
-                            <span class="skill-percentage">82%</span>
-                        </div>
-                        <svg class="skill-circle-svg">
-                            <circle class="skill-circle-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="skill-circle-progress" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                    </div>
-                    <div class="skill-info">
-                        <h4>MLOps & DevOps</h4>
-                        <p>Model Deployment, CI/CD, Docker, Kubernetes</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Showreel Section -->
-    <section id="showreel" class="showreel">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Showreel</h2>
-                <p class="section-subtitle">About me, experience and projects — a motion-graphics portfolio film</p>
-            </div>
-            <div class="showreel-frame">
-                <video controls preload="metadata" playsinline poster="motion-film/poster.jpg">
-                    <source src="motion-film/portfolio-film.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Innovative AI solutions that push the boundaries of technology</p>
-            </div>
-            
-            <!-- Project Filters -->
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
-                <button class="filter-btn" data-filter="web-dev">Web Development</button>
-                <button class="filter-btn" data-filter="devops">DevOps</button>
-                <button class="filter-btn" data-filter="automation">Automation</button>
-            </div>
-            
-            <!-- Project Search -->
-            <div class="project-search">
-                <div class="search-container">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="project-search" placeholder="Search projects...">
-                </div>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-category="ai-ml automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="project-status">Jane Aerospace · Oct 2026</div>
-                    </div>
-                    <h3 class="project-title">AI Supplier Intelligence Platform</h3>
-                    <p class="project-description">
-                        From a parts request to verified suppliers in minutes. AI extracts part numbers and certifications, searches directories, the web and stock lists, reads supplier sites and PDFs, and scores every lead with evidence links.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">Celery</span>
-                        <span class="tech-tag">Redis</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Claude AI</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div class="project-status">Jane Aerospace · Sep 2026</div>
-                    </div>
-                    <h3 class="project-title">AI-Powered Supply Chain Management SaaS</h3>
-                    <p class="project-description">
-                        One platform for the full procurement lifecycle: AI order analysis, supplier matching, automated RFQs and quote comparison, PO/PI generation, Zoho CRM/Books/Mail sync, cost-anomaly detection and live shipment tracking.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">OAuth</span>
-                        <span class="tech-tag">Zoho CRM</span>
-                        <span class="tech-tag">Zoho Books</span>
-                        <span class="tech-tag">Zoho Mail</span>
-                        <span class="tech-tag">Tracking APIs</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-phone-volume"></i>
-                        </div>
-                        <div class="project-status">Jane Aerospace · Aug 2026</div>
-                    </div>
-                    <h3 class="project-title">AI Sales Call &amp; Customer Onboarding Engine</h3>
-                    <p class="project-description">
-                        Click-to-call from the lead sheet with Deepgram live transcription. AI detects intent and objections, auto-sends onboarding, KYC and NDA links, updates lead status and grades call quality.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">VoIP</span>
-                        <span class="tech-tag">Deepgram</span>
-                        <span class="tech-tag">LLMs</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <div class="project-status">Jane Aerospace · Jul 2026</div>
-                    </div>
-                    <h3 class="project-title">Autonomous AI Hiring &amp; Recruitment Platform</h3>
-                    <p class="project-description">
-                        Zoho Recruit integration, AI resume parsing and scoring, automated candidate communications, a live duplex AI video interviewer with a digital avatar, and auto-scheduling with Managing Directors.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Zoho Recruit</span>
-                        <span class="tech-tag">Deepgram</span>
-                        <span class="tech-tag">LLMs</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml automation web-dev">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-file-signature"></i>
-                        </div>
-                        <div class="project-status">Jane Aerospace · Jun 2026</div>
-                    </div>
-                    <h3 class="project-title">AI Customer Onboarding, Interview &amp; Contract Automation</h3>
-                    <p class="project-description">
-                        Lead → AI qualification → slot booking → AI interview → KYC → NDA → AI negotiation → e-signature → Zoho CRM &amp; Books provisioning, with human approval for sensitive steps.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">LangGraph</span>
-                        <span class="tech-tag">Celery</span>
-                        <span class="tech-tag">WebRTC</span>
-                        <span class="tech-tag">Tiptap</span>
-                        <span class="tech-tag">Zoho</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml automation devops">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div class="project-status">Jane Aerospace · Jun 2026</div>
-                    </div>
-                    <h3 class="project-title">AI Vendor Onboarding &amp; Supplier Management</h3>
-                    <p class="project-description">
-                        Automates vendor discovery, KYC and document verification with OCR/document AI, compliance checks, NDA generation, negotiation, e-signature and supplier creation across ERP/CRM.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">LangGraph</span>
-                        <span class="tech-tag">OCR</span>
-                        <span class="tech-tag">PyMuPDF</span>
-                        <span class="tech-tag">Kubernetes</span>
-                        <span class="tech-tag">OpenTelemetry</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-user-doctor"></i>
-                        </div>
-                        <div class="project-status">Aiqwip · Feb–May 2026</div>
-                    </div>
-                    <h3 class="project-title">AI Medical Avatar &amp; Real-Time Training Platform</h3>
-                    <p class="project-description">
-                        Interactive AI avatar for medical candidate training with real-time voice conversation: Deepgram speech-to-text → LLM with medical context → text-to-speech.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Deepgram</span>
-                        <span class="tech-tag">LLMs</span>
-                        <span class="tech-tag">STT/TTS</span>
-                        <span class="tech-tag">AI Avatars</span>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="project-status">Aiqwip · Nov 2025–Jan 2026</div>
-                    </div>
-                    <h3 class="project-title">GhostAgent – DataRipple</h3>
-                    <p class="project-description">
-                        Real-time conversation intelligence for sales calls: extracts entities and intent from live voice, MCP tools for business data, document compliance checks and sync to 20+ CRMs.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">MCP</span>
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">Twilio</span>
-                        <span class="tech-tag">Vonage</span>
-                        <span class="tech-tag">Salesforce</span>
-                        <span class="tech-tag">HubSpot</span>
-                    </div>
-                </div>
-
-                <div class="project-card featured" data-category="ai-ml automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="project-status">Featured</div>
-                    </div>
-                    <h3 class="project-title">🚀 DragAI - Agentic AI Workflow Platform</h3>
-                    <p class="project-description">
-                        Next-Generation Visual AI Orchestration System with 77+ pre-built nodes for AI, ML, RAG, and data. 
-                        Drag-and-drop platform for building intelligent multi-agent systems with no coding required.
-                    </p>
-                    <div class="project-features">
-                        <div class="feature-item">🎨 Visual Workflow Builder</div>
-                        <div class="feature-item">🤖 Multi-LLM Support (OpenAI, Gemini, Claude)</div>
-                        <div class="feature-item">📚 RAG Integration with Vector DBs</div>
-                        <div class="feature-item">⚡ Real-Time Execution & Debug</div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/Agentic-AI-Workflow-DragAI-Edition-" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">AI-Powered Excel Analytics Platform</h3>
-                    <p class="project-description">
-                        Conversational AI platform that analyzes Excel data using natural language. 
-                        Upload any Excel file and ask questions like "What are sales trends by region?" to get instant AI insights with interactive charts.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">Ollama</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/AI-Data-Agent" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Agentic Graph RAG as a Service</h3>
-                    <p class="project-description">
-                        An extensible, production-grade Agentic Graph RAG platform that automatically constructs knowledge graphs from unstructured data, 
-                        integrates vector, graph, and logical retrieval with autonomous agents for intelligent document processing.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Graph RAG</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Knowledge Graphs</span>
-                        <span class="tech-tag">LLM Agents</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/agentic-graph-rag-as-a-service" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml web-dev">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-magic"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Agentic AI Workflow - DragAI Edition</h3>
-                    <p class="project-description">
-                        Next-generation drag-and-drop AI workflow platform that allows businesses, developers, and AI enthusiasts 
-                        to orchestrate multi-agent intelligent systems visually with 77+ AI nodes and real-time execution.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Multi-Agent</span>
-                        <span class="tech-tag">Workflow Engine</span>
-                        <span class="tech-tag">Visual Programming</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/Agentic-AI-Workflow-DragAI-Edition-" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="devops automation">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">AutoDevOps - LLM Powered Infrastructure</h3>
-                    <p class="project-description">
-                        AI-driven DevOps platform that transforms plain English commands into production-ready Infrastructure-as-Code (IaC). 
-                        Using fine-tuned LLM with RAG, it cuts manual setup by 95% while ensuring enterprise-grade security.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LLM</span>
-                        <span class="tech-tag">DevOps</span>
-                        <span class="tech-tag">Infrastructure</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/AutoDevOps-LLM-Powered-Infrastructure-Orchestration" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml web-dev">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Drag.ai MCP Chatbot</h3>
-                    <p class="project-description">
-                        AI-MCP Orchestrator — ChatGPT-style Agentic System integrating LangChain, LangGraph, FastMCP, and Google MCP SDK, 
-                        with 10 MCP tools, toggleable UI, persistent memory, and reactive visuals.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">MCP</span>
-                        <span class="tech-tag">Chatbot</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/Drag.ai-mcp-chatbbot" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml devops">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">MLOps Medical Insurance Cost Analysis</h3>
-                    <p class="project-description">
-                        Complete MLOps pipeline on Medical Insurance Cost Dataset with CI/CD implementation, MLflow integration, 
-                        automated model training, validation, and deployment with comprehensive monitoring and versioning.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">MLOps</span>
-                        <span class="tech-tag">MLflow</span>
-                        <span class="tech-tag">CI/CD</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/Mlops-complte-on-Medical-Insurance-Cost-Dataset" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="ai-ml fintech">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">AI-Powered Debt Recovery Agent</h3>
-                    <p class="project-description">
-                        Intelligent debt collection system with multi-channel communication (chat, SMS, email, voice) and 
-                        AI-powered negotiations using ChatGroq LLM. Features FDCPA compliance, RAG system, and automated escalation.
-                    </p>
-                    <div class="project-features">
-                        <div class="feature-item">💬 Multi-Channel Communication</div>
-                        <div class="feature-item">🤖 AI-Powered Negotiations</div>
-                        <div class="feature-item">⚖️ FDCPA Compliance Built-in</div>
-                        <div class="feature-item">📊 Real-time Analytics</div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">ChatGroq</span>
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FinTech</span>
-                        <span class="tech-tag">Compliance</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/bharathmrr/Debt-recovery-agent" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                        <a href="#" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="blog">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Insights</h2>
-                <p class="section-subtitle">Thoughts on AI, technology trends, and industry innovations</p>
-            </div>
-            <div class="blog-grid">
-                <article class="blog-card featured">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop&crop=center" alt="AI Future" loading="lazy">
-                        <div class="blog-category">AI/ML</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="fas fa-calendar"></i> Nov 2024</span>
-                            <span class="blog-read-time"><i class="fas fa-clock"></i> 5 min read</span>
-                        </div>
-                        <h3 class="blog-title">The Future of Multi-Agent AI Systems</h3>
-                        <p class="blog-excerpt">
-                            Exploring how autonomous AI agents are revolutionizing software development and business processes through 
-                            collaborative intelligence and distributed problem-solving capabilities.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Multi-Agent</span>
-                            <span class="blog-tag">AI Systems</span>
-                            <span class="blog-tag">Future Tech</span>
-                        </div>
-                        <a href="#" class="blog-link">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop&crop=center" alt="RAG Systems" loading="lazy">
-                        <div class="blog-category">Technical</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="fas fa-calendar"></i> Oct 2024</span>
-                            <span class="blog-read-time"><i class="fas fa-clock"></i> 7 min read</span>
-                        </div>
-                        <h3 class="blog-title">Building Production-Ready RAG Systems</h3>
-                        <p class="blog-excerpt">
-                            A comprehensive guide to implementing Retrieval-Augmented Generation systems that scale, 
-                            from vector databases to knowledge graphs and beyond.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">RAG</span>
-                            <span class="blog-tag">LLM</span>
-                            <span class="blog-tag">Production</span>
-                        </div>
-                        <a href="#" class="blog-link">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop&crop=center" alt="DevOps AI" loading="lazy">
-                        <div class="blog-category">DevOps</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="fas fa-calendar"></i> Sep 2024</span>
-                            <span class="blog-read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                        </div>
-                        <h3 class="blog-title">AI-Driven DevOps: The Next Evolution</h3>
-                        <p class="blog-excerpt">
-                            How artificial intelligence is transforming DevOps practices, from automated infrastructure 
-                            provisioning to intelligent monitoring and self-healing systems.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">DevOps</span>
-                            <span class="blog-tag">Automation</span>
-                            <span class="blog-tag">AI</span>
-                        </div>
-                        <a href="#" class="blog-link">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section id="testimonials" class="contact-form-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's discuss your next AI project or collaboration opportunity</p>
-            </div>
-            <div class="contact-form-container">
-                <div class="contact-form-card">
-                    <div class="form-header">
-                        <div class="form-icon">
-                            <i class="fas fa-paper-plane"></i>
-                        </div>
-                        <h3>Send me a message</h3>
-                        <p>I'll get back to you within 24 hours</p>
-                    </div>
-                    <form id="main-contact-form" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="contact-name">Your Name</label>
-                                <input type="text" id="contact-name" name="name" placeholder="Enter your full name" required>
-                                <div class="form-icon-input">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="contact-email">Your Email</label>
-                                <input type="email" id="contact-email" name="email" placeholder="Enter your email address" required>
-                                <div class="form-icon-input">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="contact-message">Your Message</label>
-                                <textarea id="contact-message" name="message" placeholder="Tell me about your project, collaboration ideas, or any questions you have..." rows="6" required></textarea>
-                                <div class="form-icon-input">
-                                    <i class="fas fa-comment-dots"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                <i class="fas fa-paper-plane"></i>
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
-                <!-- Contact Info Cards -->
-                <div class="contact-info-cards">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h4>Email</h4>
-                        <p>bharathreddyget@gmail.com</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h4>Phone</h4>
-                        <p>+91 9347294579</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h4>Location</h4>
-                        <p>Andhra Pradesh, India</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">From building projects to shipping enterprise AI platforms</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item current">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Automation, AI &amp; ML Engineer</h3>
-                            <span class="company">Jane</span>
-                            <span class="duration">Jun 2026 – Present · Bengaluru</span>
-                        </div>
-                        <ul class="achievements">
-                            <li>Design and build AI-powered automation for supply chain, customer and vendor onboarding, and sales</li>
-                            <li>Real-time voice AI: streaming audio, speech-to-text, text-to-speech and full-duplex conversation</li>
-                            <li>Backend services with FastAPI, Celery, Docker and event-driven pipelines</li>
-                            <li>Integrations with Zoho CRM, Zoho Books, Zoho WorkDrive, email and telephony platforms</li>
-                        </ul>
-                        <div class="experience-badge">Current Role</div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Generative AI Engineer</h3>
-                            <span class="company">Aiqwip</span>
-                            <span class="duration">Nov 2025 – May 2026 · Bengaluru</span>
-                        </div>
-                        <ul class="achievements">
-                            <li>Built multimodal AI systems, agentic workflows and automation platforms</li>
-                            <li>Autonomous agents with LangGraph, LangChain, MCP and local LLMs (Ollama, llama.cpp)</li>
-                            <li>Delivered GhostAgent (conversation intelligence) and an AI medical training avatar</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>AI/ML Engineer</h3>
-                            <span class="company">Freelance</span>
-                            <span class="duration">Apr 2024 – Oct 2025 · Remote</span>
-                        </div>
-                        <ul class="achievements">
-                            <li>Built real-world projects across ML, deep learning, generative AI and automation</li>
-                            <li>Trained, evaluated and deployed ML/DL models, data pipelines and APIs</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Data Scientist (Intern)</h3>
-                            <span class="company">EISystems Technologies</span>
-                            <span class="duration">Apr 2025 – May 2025 · Remote</span>
-                        </div>
-                        <ul class="achievements">
-                            <li>Data collection, cleaning and analysis; built predictive models with Python and SQL</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Web Developer (Intern)</h3>
-                            <span class="company">VaultofCodes</span>
-                            <span class="duration">Nov 2023 – Dec 2023 · Remote</span>
-                        </div>
-                        <ul class="achievements">
-                            <li>Responsive front-ends in HTML, CSS, JavaScript and React with Node.js/Python back-ends</li>
-                            <li>Integrated AI features such as chatbots and smart recommendations</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item graduation">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>B.Tech Computer Science (AI/ML) - Graduated</h3>
-                            <span class="company">Siddharth Institute of Engineering</span>
-                            <span class="duration">2021 – June 2025</span>
-                        </div>
-                        <div class="grade">CGPA: 8.62/10</div>
-                        <div class="graduation-badge">🎓 Graduated</div>
-                        <ul class="achievements">
-                            <li>Specialized in Artificial Intelligence and Machine Learning</li>
-                            <li>Completed capstone project on Speech Emotion Recognition</li>
-                            <li>Built strong foundation in algorithms, data structures, and AI systems</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Let's Build Something Amazing</h2>
-                <p class="section-subtitle">Ready to collaborate on your next AI project?</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email</h3>
-                        <p>bharathreddyget@gmail.com</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h3>Phone</h3>
-                        <p>+91 9347294579</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Location</h3>
-                        <p>Andhra Pradesh, India</p>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/bharathsimha-reddy-putta-a2292a211/" class="social-link linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/bharathmrr" class="social-link github">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="mailto:bharathreddyget@gmail.com" class="social-link email">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Bharathsimha Reddy Putta. Crafted with AI precision.</p>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#achievements">Achievements</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#testimonials">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <script src="assets/js/viz.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
