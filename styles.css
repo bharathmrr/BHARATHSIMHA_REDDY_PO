@@ -402,3 +402,7 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 .fm-track span:nth-child(even) { -webkit-text-stroke: 0; background: var(--grad); -webkit-background-clip: text; background-clip: text; opacity: .9; }
 .footer { border-top: 0; }
 @media (max-width: 900px) { .sweep { display: none; } }
+
+/* the gallery header stays perfectly still while the cards slide */
+.more-head, .more-head * { transform: none !important; clip-path: none !important; }
+.more-head .reveal { opacity: 1; }

@@ -147,10 +147,10 @@
     G.registerPlugin(ScrollTrigger);
 
     // ------------------------------------------------------------------ 4. headings wipe in, eyebrows decode
-    G.utils.toArray('.h2, .h1, .contact-lead').forEach(h => {
+    G.utils.toArray('.h2, .h1, .contact-lead').filter(h => !h.closest('.more-head')).forEach(h => {
         G.fromTo(h, { clipPath: 'inset(0% 0% 100% 0%)', y: 70, skewY: 5 }, { clipPath: 'inset(0% 0% -20% 0%)', y: 0, skewY: 0, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 92%', end: 'top 55%', scrub: 1 } });
     });
-    $$('.eyebrow').forEach(el => {
+    $$('.eyebrow').filter(el => !el.closest('.more-head')).forEach(el => {
         const txt = el.textContent.trim(); if (!txt) return;
         ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => scramble(el, txt, 1.1) });
     });
@@ -166,7 +166,7 @@
     }).observe(idx, { childList: true, characterData: true, subtree: true });
 
     // ------------------------------------------------------------------ 6. velocity skew on content blocks
-    const skewTargets = $$('.impact-grid, .edu-grid, .stack-rows, .more-head, .exp-head, .contact-btns, .band-caption');
+    const skewTargets = $$('.impact-grid, .edu-grid, .stack-rows, .exp-head, .contact-btns, .band-caption');
     let skew = 0;
     ScrollTrigger.create({ onUpdate: s => { const v = G.utils.clamp(-7, 7, s.getVelocity() / -260); if (Math.abs(v) > Math.abs(skew)) skew = v; } });
     G.ticker.add(() => { skew *= .9; const v = Math.abs(skew) < .02 ? 0 : skew; skewTargets.forEach(el => el.style.transform = v ? `skewY(${v.toFixed(2)}deg)` : ''); });
