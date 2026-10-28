@@ -289,7 +289,8 @@
     $$('.reveal, [data-split]').forEach(el => io.observe(el));
     $$('[data-count]').forEach(el => io.observe(el));
     function count(el) { const v = +el.dataset.count, t0 = performance.now(); (function tick(now) { const k = clamp((now - t0) / 1600), e = 1 - Math.pow(1 - k, 3); el.textContent = Math.round(v * e); if (k < 1) requestAnimationFrame(tick); })(t0); }
-    setTimeout(() => $$('#hero [data-split], #hero .reveal').forEach(el => el.classList.add('in')), 150);
+    const heroIn = () => $$('#hero [data-split], #hero .reveal').forEach(el => el.classList.add('in'));
+    if (document.documentElement.classList.contains('has-intro')) { addEventListener('intro:done', heroIn, { once: true }); setTimeout(heroIn, 6000); } else setTimeout(heroIn, 150);
 
     // ------------------------------------------------------------------ nav, progress, section index
     const nav = $('#nav'), prog = $('#progress'), idx = $('#nav-index');
@@ -300,7 +301,7 @@
         const y = scrollY; nav.classList.toggle('scrolled', y > 40);
         prog.style.width = (y / Math.max(1, document.body.scrollHeight - innerHeight) * 100) + '%';
         let cur = secs[0]; for (const s of secs) if (s.offsetTop <= y + innerHeight * .4) cur = s;
-        idx.textContent = cur.dataset.label;
+        if (idx.dataset.l !== cur.dataset.label) { idx.dataset.l = cur.dataset.label; idx.textContent = cur.dataset.label; }
         const key = cur.id.startsWith('p') && cur.classList.contains('proj') ? 'featured' : cur.id;
         $$('#nav-links a').forEach(a => a.classList.toggle('active', a.dataset.sec === key));
         if (!mobile()) {

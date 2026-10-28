@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("has-intro");</script>
     <a class="skip" href="#about">Skip to content</a>
     <canvas id="bg" aria-hidden="true"></canvas>
     <div class="progress" id="progress"></div>
@@ -207,5 +208,6 @@
     <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/js/viz.js"></script>
     <script src="script.js"></script>
+    <script src="assets/js/motion.js"></script>
 </body>
 </html>
