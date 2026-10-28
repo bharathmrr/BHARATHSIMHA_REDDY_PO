@@ -41,7 +41,7 @@
         { t: ['AI Hiring', 'Platform'], org: 'JANE · JUL 2026', c: C.gr, d: 'Autonomous recruitment: Zoho Recruit integration, AI resume parsing and scoring, a live duplex AI video interviewer with a digital avatar, and auto-scheduling with Managing Directors.',
           stats: [['20 min', 'live AI video interview'], ['Zoho', 'Recruit integration'], ['Auto', 'summaries & scheduling']],
           tech: ['Python', 'FastAPI', 'Zoho Recruit', 'Deepgram', 'Digital Avatar', 'LLMs'],
-          steps: [['img', 'assets/img/hir1.jpg', 'Candidate pipeline'], ['img', 'assets/img/hir2.jpg', 'Live AI interviewer'], ['v', 'funnel', 'Scoring funnel']] },
+          steps: [['img', 'assets/img/hir1.jpg', 'Candidate pipeline'], ['talk', null, 'Live AI interviewer · speaking'], ['v', 'funnel', 'Scoring funnel']] },
     ];
     const MORE = [
         ['WORKFLOW · JANE', 'Supply Chain SaaS', 'AI order analysis, supplier match, RFQs, quotes, POs and live shipment tracking.', 'Zoho CRM · Books · Mail', null, C.gr, null, 'mesh'],
@@ -164,7 +164,7 @@
                 <p class="pdesc">${p.d}</p>
                 <div class="pstats">${p.stats.map(s => `<div class="pstat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
                 <div class="chips">${p.tech.map(t => `<span class="chip">${t}</span>`).join('')}</div>${link}</div>
-            <div class="pvis"><div class="device"><div class="dev-bar"><i></i><i></i><i></i><span class="mono">${p.t.join(' ')} — live</span></div>
+            <div class="pvis"><div class="device"><div class="dev-bar"><i></i><i></i><i></i><span class="mono">${p.t.join(' ')} — live</span>${p.steps.some(s => s[0] === 'talk') ? '<button class="snd mono" type="button">🔊 SOUND ON</button>' : ''}</div>
                 <div class="screen"><canvas width="820" height="560"></canvas>${p.steps.map((s, si) => s[0] === 'img' ? `<div class="simg ${s[3] || ''}" data-s="${si}"><img src="${s[1]}" alt="${s[2]}" loading="lazy"></div>` : '').join('')}<div class="caption"></div></div></div>
                 <div class="steps">${p.steps.map((s, si) => `<button class="step" data-s="${si}">0${si + 1}<span class="lbl">${s[2].toUpperCase()}</span></button>`).join('')}</div></div>
         </div></div>`;
@@ -172,14 +172,95 @@
         const st = { sec, p, cv: $('canvas', sec), cap: $('.caption', sec), step: -1, since: 0, visible: false };
         $$('.step', sec).forEach(b => b.onclick = () => { const i = +b.dataset.s; if (mobile()) return setStep(st, i); go(sec.offsetTop + (i + .5) / p.steps.length * (sec.offsetHeight - innerHeight)); });
         projState.push(st);
+        const snd = $('.snd', sec); if (snd) snd.onclick = () => { talk.sound = !talk.sound; snd.textContent = talk.sound ? '🔊 SOUND ON' : '🔇 SOUND OFF'; snd.classList.toggle('off', !talk.sound); if (talk.on) { talk.blocked = false; sayLine(); } };
     });
     function setStep(st, i) {
         if (st.step === i) return; st.step = i; st.since = performance.now() / 1000; const s = st.p.steps[i];
         $$('.step', st.sec).forEach((b, j) => b.classList.toggle('on', j === i));
         $$('.simg', st.sec).forEach(el => el.classList.toggle('on', +el.dataset.s === i));
         st.cv.classList.toggle('on', s[0] !== 'img');
-        st.cap.textContent = `${i + 1} · ${s[2]}`;
+        if (s[0] === 'talk') startTalk(st); else if (talk.st === st) stopTalk();
+        st.cap.textContent = `${i + 1} · ${s[2]}`; st.cap.style.opacity = s[0] === 'talk' ? 0 : '';
     }
+    // ------------------------------------------------------------------ talking AI interviewer (round face + real speech)
+    const TALK_LINES = [
+        "Hi, I'm the AI interviewer. Thanks for joining today.",
+        "Walk me through how you would make a RAG pipeline reliable in production.",
+        "Nice. How would you keep a real-time voice agent's latency low?",
+        "Great answers. I'll share your summary and schedule the next round."
+    ];
+    const talk = { st: null, on: false, line: 0, text: '', start: 0, char: 0, pulse: 0, speaking: false, blocked: false, sound: true, sim: true, timer: 0 };
+    const synth = window.speechSynthesis; let voice = null;
+    const pickVoice = () => { if (!synth) return; const vs = synth.getVoices(); voice = vs.find(v => /en-IN/i.test(v.lang)) || vs.find(v => /Google UK English Female|Samantha|Google US English|Microsoft (Aria|Jenny)/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || null; };
+    if (synth) { pickVoice(); synth.onvoiceschanged = pickVoice; }
+    const nowS = () => performance.now() / 1000;
+    function nextLine() { clearTimeout(talk.timer); talk.timer = setTimeout(() => { if (!talk.on) return; talk.line++; sayLine(); }, 1400); }
+    function simRun() { clearTimeout(talk.timer); talk.sim = true; const left = talk.text.length / 15 - (nowS() - talk.start); talk.timer = setTimeout(nextLine, Math.max(0, left * 1000)); }
+    function sayLine() {
+        if (!talk.on) return; clearTimeout(talk.timer);
+        const text = TALK_LINES[talk.line % TALK_LINES.length];
+        talk.text = text; talk.start = nowS(); talk.char = 0; talk.speaking = false; talk.sim = true;
+        if (!synth || !talk.sound || talk.blocked) return simRun();
+        synth.cancel();
+        const u = new SpeechSynthesisUtterance(text); if (voice) { u.voice = voice; u.lang = voice.lang; } u.rate = 1; u.pitch = 1.05;
+        u.onstart = () => { if (talk.text !== text) return; clearTimeout(talk.timer); talk.speaking = true; talk.sim = false; talk.start = nowS(); };
+        u.onboundary = e => { if (talk.text !== text) return; talk.char = e.charIndex + (e.charLength || 0); talk.pulse = 1; };
+        u.onend = () => { if (talk.text !== text) return; talk.speaking = false; talk.char = text.length; nextLine(); };
+        u.onerror = e => { if (talk.text !== text || e.error === 'interrupted' || e.error === 'canceled') return; talk.speaking = false; talk.blocked = e.error === 'not-allowed'; simRun(); };
+        synth.speak(u);
+        setTimeout(() => { if (talk.on && talk.text === text && !talk.speaking && talk.sim) { talk.blocked = true; talk.start = nowS(); simRun(); } }, 1500);
+    }
+    function startTalk(st) { if (talk.on && talk.st === st) return; talk.st = st; if (!st.visible) return; talk.on = true; talk.line = 0; sayLine(); }
+    function stopTalk() { talk.on = false; clearTimeout(talk.timer); if (synth) synth.cancel(); talk.speaking = false; }
+    const unlock = () => { if (talk.on && talk.blocked && talk.sound) { talk.blocked = false; sayLine(); } };
+    addEventListener('pointerdown', unlock, { passive: true }); addEventListener('keydown', unlock);
+    addEventListener('pagehide', () => synth && synth.cancel());
+
+    const FACE = Array.from({ length: 1300 }, (_, i) => { const r = Math.sqrt((i + .5) / 1300), a = i * 2.39996; return [Math.cos(a) * r, Math.sin(a) * r]; });
+    function drawTalk(c, t, k, col) {
+        const cx = 410, cy = 222, R = 140 * (.7 + .3 * (1 - Math.pow(1 - k, 3)));
+        const el = nowS() - talk.start;
+        const chars = !talk.on ? 0 : talk.sim ? Math.min(talk.text.length, el * 15) : Math.max(talk.char, Math.min(talk.text.length, el * 13));
+        const active = talk.on && (talk.speaking || (talk.sim && chars < talk.text.length));
+        talk.pulse *= .9;
+        const env = active ? (.25 + .75 * Math.abs(Math.sin(t * 17)) * (.55 + .45 * Math.sin(t * 4.3))) * (.7 + .3 * talk.pulse) : .04 + .03 * Math.sin(t * 2);
+        // glow
+        let g = c.createRadialGradient(cx, cy, 0, cx, cy, 300); g.addColorStop(0, rgba(col, .22 + .15 * env)); g.addColorStop(1, rgba(col, 0)); c.fillStyle = g; c.fillRect(0, 0, 820, 560);
+        // rotating rings
+        c.save(); c.translate(cx, cy);
+        [[R + 52, 18, t * .4, .55], [R + 74, 6, -t * .25, .35]].forEach(([rr, n, rot, a]) => { c.strokeStyle = rgba(col, a); c.lineWidth = 2; for (let i = 0; i < n; i++) { const a0 = rot + i / n * Math.PI * 2; c.beginPath(); c.arc(0, 0, rr, a0, a0 + Math.PI * 2 / n * .62); c.stroke(); } });
+        c.strokeStyle = rgba(col, .25); c.lineWidth = 1; for (let i = 0; i < 90; i++) { const a = i / 90 * Math.PI * 2 + t * .1, L = i % 5 ? 4 : 10; c.beginPath(); c.moveTo(Math.cos(a) * (R + 92), Math.sin(a) * (R + 92)); c.lineTo(Math.cos(a) * (R + 92 + L), Math.sin(a) * (R + 92 + L)); c.stroke(); }
+        // radial voice bars
+        for (let i = 0; i < 96; i++) { const a = i / 96 * Math.PI * 2; const v = env * (.35 + .65 * Math.abs(Math.sin(i * .9 + t * 9) * Math.cos(i * .37 - t * 5))); const r0 = R + 14, r1 = r0 + 4 + v * 34; c.strokeStyle = i % 2 ? col : '#f472b6'; c.globalAlpha = .45 + .5 * v; c.lineWidth = 3; c.lineCap = 'round'; c.beginPath(); c.moveTo(Math.cos(a) * r0, Math.sin(a) * r0); c.lineTo(Math.cos(a) * r1, Math.sin(a) * r1); c.stroke(); }
+        c.globalAlpha = 1;
+        // round holographic face: dot sphere
+        for (const [x, y] of FACE) { const z = Math.sqrt(Math.max(0, 1 - x * x - y * y)); const jit = env * 2.2 * Math.sin(t * 20 + x * 30); c.fillStyle = x < 0 ? col : '#a78bfa'; c.globalAlpha = .08 + .55 * z; c.fillRect(x * R + jit - 1.2, y * R - 1.2, 2.4, 2.4); }
+        c.globalAlpha = 1; c.strokeStyle = rgba(col, .9); c.lineWidth = 2.5; c.beginPath(); c.arc(0, 0, R, 0, Math.PI * 2); c.stroke();
+        c.strokeStyle = rgba(col, .25); c.lineWidth = 1; c.beginPath(); c.arc(0, 0, R * .82, 0, Math.PI * 2); c.stroke();
+        // eyes (blink)
+        const blink = (t % 4.2) < .14 ? .12 : 1; c.fillStyle = '#ffffff'; c.shadowColor = col; c.shadowBlur = 18;
+        [-1, 1].forEach(sx => { c.beginPath(); c.ellipse(sx * R * .34, -R * .2, R * .13, R * .055 * blink, 0, 0, Math.PI * 2); c.fill(); });
+        // mouth — opens with the voice
+        const mh = 3 + env * R * .2; c.shadowBlur = 22; c.strokeStyle = '#f472b6'; c.lineWidth = 4; c.beginPath(); c.ellipse(0, R * .42, R * .26, mh, 0, 0, Math.PI * 2); c.stroke();
+        c.fillStyle = rgba('#f472b6', .18 + .3 * env); c.fill(); c.shadowBlur = 0;
+        c.restore();
+        // labels
+        c.font = '600 15px Inter, sans-serif'; c.textBaseline = 'alphabetic';
+        c.fillStyle = '#fb7185'; c.fillText('● LIVE  AI INTERVIEWER', 24, 38);
+        c.textAlign = 'right'; c.fillStyle = active ? col : '#64748b'; c.fillText(active ? (talk.speaking ? 'SPEAKING ◖◗' : 'CAPTIONS') : 'LISTENING …', 796, 38); c.textAlign = 'left';
+        // caption
+        if (talk.on && talk.text) {
+            const shown = talk.text.slice(0, Math.floor(chars)); c.font = '600 21px Inter, sans-serif';
+            const words = shown.split(' '), lines = []; let cur = ''; words.forEach(w => { const tt = cur ? cur + ' ' + w : w; if (c.measureText(tt).width > 640 && cur) { lines.push(cur); cur = w; } else cur = tt; }); if (cur) lines.push(cur);
+            c.fillStyle = 'rgba(6,9,20,.78)'; c.strokeStyle = rgba(col, .6); c.lineWidth = 1.5; c.beginPath(); c.roundRect(70, 420, 680, 84, 14); c.fill(); c.stroke();
+            c.fillStyle = '#f8fafc'; lines.slice(-2).forEach((l, i) => c.fillText(l, 92, 454 + i * 30));
+        }
+        if (talk.on && talk.blocked && talk.sound) {
+            c.font = '700 15px Inter, sans-serif'; const msg = '🔊  Click anywhere to hear me speak'; const w = c.measureText(msg).width + 36;
+            const pa = .75 + .25 * Math.sin(t * 4); c.globalAlpha = pa; c.fillStyle = rgba(col, .2); c.strokeStyle = col; c.beginPath(); c.roundRect(410 - w / 2, 516, w, 34, 17); c.fill(); c.stroke(); c.fillStyle = '#fff'; c.textAlign = 'center'; c.fillText(msg, 410, 538); c.textAlign = 'left'; c.globalAlpha = 1;
+        }
+    }
+
     PROJ.forEach((_, i) => setStep(projState[i], 0));
     function drawDevice(st, t) {
         const s = st.p.steps[st.step], c2 = st.cv.getContext('2d'), k = clamp((t - st.since) / 2.6);
@@ -190,6 +271,7 @@
             ctx.save(); ctx.beginPath(); ctx.rect(0, 0, 820, 560); ctx.clip();
             if (s[0] === 'v') V[s[1]](0, -10, 820, 570, t, k, st.p.c);
             else if (s[0] === 'pipe') { pipeline(10, 120, 800, 260, s[1], t, k, st.p.c); lineChart(70, 420, 680, 80, t, 2, st.p.c, k, '', .8); }
+            else if (s[0] === 'talk') drawTalk(c2, t, k, st.p.c);
             else if (s[0] === 'wave') { waveform(60, 120, 700, 200, t, st.p.c, .4 + .6 * k); s[1].forEach((w, i) => txt(w, 160 + i * 250, 400, { size: 26, fam: 'Orb', w: 700, col: i === Math.floor(t * .8) % 3 ? COL.wh : st.p.c, align: 'center', sp: 4 })); }
             ctx.restore();
         } finally { ctx = prev; }
@@ -226,6 +308,8 @@
             projState.forEach(st => { const kk = clamp((y - st.sec.offsetTop) / Math.max(1, st.sec.offsetHeight - innerHeight)); setStep(st, Math.min(st.p.steps.length - 1, Math.floor(kk * st.p.steps.length))); });
         }
         projState.forEach(st => { const r = st.sec.getBoundingClientRect(); st.visible = r.bottom > 0 && r.top < innerHeight; });
+        if (talk.st && !talk.st.visible && talk.on) stopTalk();
+        else if (talk.st && talk.st.visible && !talk.on && talk.st.p.steps[talk.st.step][0] === 'talk') startTalk(talk.st);
     }
     if (mobile()) showExp(0);
     addEventListener('scroll', onScroll, { passive: true });
