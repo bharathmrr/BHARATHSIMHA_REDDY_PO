@@ -2,6 +2,12 @@
 
 🚀 **Modern, Interactive Portfolio Website showcasing AI/ML expertise and innovative projects**
 
+## 🎬 Showreel — Portfolio Motion Film
+
+[![Portfolio motion film](motion-film/poster.jpg)](motion-film/portfolio-film.mp4)
+
+A ~5-minute motion-graphics film covering about me, experience (Jane, Aiqwip, freelance, internships), eight enterprise AI platforms and featured GitHub projects, using real images from the repositories. It is generated entirely from code — canvas animation, Playwright frame capture, ffmpeg and a Python-synthesised score. See [`motion-film/`](motion-film/) to edit and rebuild it.
+
 ## 🌟 Features
 
 - **Modern Design**: Clean, professional layout with stunning animations
