@@ -2,34 +2,30 @@
 
 Automation, AI & ML Engineer · Generative AI · Agentic AI · Voice AI · Bengaluru, India
 
-A cinematic single-page portfolio designed to match the [portfolio motion film](motion-film/): aurora night sky, cyan → indigo → pink gradient type, glass panels, and live animated visuals shared with the film.
-
-## 🎬 Showreel
-
-[![Portfolio motion film](motion-film/poster.jpg)](motion-film/portfolio-film.mp4)
-
-A ~5-minute motion-graphics film — about me, experience, enterprise AI platforms and featured GitHub projects — generated entirely from code. See [`motion-film/`](motion-film/) to edit and rebuild it.
+A cinematic, scroll-driven single-page portfolio: aurora night sky, cyan → indigo → pink gradient type, glass panels, smooth inertia scrolling (Lenis) and scroll-scrubbed animation (GSAP ScrollTrigger).
 
 ## Sections
 
-| # | Section | What it does |
+| # | Section | Scroll effect |
 |---|---|---|
-| 00 | Intro | Name reveal over a draggable 3D dot sphere with orbit rings and rotating taglines |
-| 01 | Impact | Four count-up stat cards |
-| 02 | Experience | Sticky timeline — scroll or click a role (Jane, Aiqwip, Freelance, EISystems, VaultofCodes) |
-| 03 | Projects | Giant marquee bands, then five sticky project showcases with live canvas visuals and real repo images, stepping as you scroll |
-| 04 | Showreel | The motion film |
-| 05 | More work | Sixteen more systems, with repo links and real screenshots where available |
-| 06 | Stack | Auto-scrolling tool rows (hover to pause) |
+| 00 | Intro | Name splits apart and the draggable 3D sphere zooms through as you scroll |
+| 01 | About | Pinned statement that lights up word by word |
+| 02 | Impact | Stat cards flip up in 3D and count up |
+| 03 | Experience | Sticky timeline — scroll or click a role (Jane, Aiqwip, Freelance, EISystems, VaultofCodes) |
+| 04 | Projects | Velocity-reactive marquee bands, then five pinned showcases: each opens from a rounded window, the screen swings into place in 3D and steps through product screens as you scroll |
+| 05 | More work | Pinned horizontal gallery of 16 systems; cards tilt with scroll speed |
+| 06 | Stack | Tool rows that speed up with scrolling (hover to pause) |
 | 07 | Education | B.Tech and early career |
-| 08 | Contact | Copy-to-clipboard email, GitHub and LinkedIn |
+| 08 | Contact | Name grows into view; copy-to-clipboard email |
 
 ## Files
 
 - `index.html`, `styles.css`, `script.js` — the site (no build step, no frameworks)
-- `assets/js/viz.js` — drawing components shared with the motion film (globe, call transcript, funnel, node canvas…)
+- `assets/img/` — product screens for the featured projects
+- `assets/js/viz.js` — live drawing components (globe, call transcript, funnel, node canvas…) shared with the motion film
+- `assets/vendor/` — GSAP + ScrollTrigger and Lenis, served locally
 - `assets/fonts/`, `motion-film/fonts/` — Geist Mono and Inter / Inter Display (SIL OFL)
-- `motion-film/` — the film, its images and the code that renders it
+- `motion-film/` — the code-generated portfolio film, plus the fonts and repo images the site reuses
 
 ## Run locally
 
