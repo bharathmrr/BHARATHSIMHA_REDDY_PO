@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/lenis.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,10 +24,10 @@
     <nav class="nav" id="nav">
         <a href="#hero" class="brand"><span class="brand-mark">BRP</span><span class="brand-name">BHARATHSIMHA REDDY PUTTA</span></a>
         <div class="nav-links" id="nav-links">
+            <a href="#about" data-sec="about">About</a>
             <a href="#impact" data-sec="impact">Impact</a>
             <a href="#exp" data-sec="exp">Experience</a>
             <a href="#featured" data-sec="featured">Projects</a>
-            <a href="#reel" data-sec="reel">Showreel</a>
             <a href="#more" data-sec="more">More</a>
             <a href="#stack" data-sec="stack">Stack</a>
             <a href="#contact" data-sec="contact">Contact</a>
@@ -50,13 +51,24 @@
                 <div class="hero-rot reveal"><span id="rot">Beyond the chatbox.</span></div>
             </div>
             <div class="hero-foot mono">
-                <a href="#impact" class="scroll"><span class="scroll-line"></span>SCROLL</a>
+                <a href="#about" class="scroll"><span class="scroll-line"></span>SCROLL</a>
                 <span class="drag">DRAG THE SPHERE ↻</span>
             </div>
         </section>
 
-        <!-- 01 IMPACT -->
-        <section id="impact" class="pad" data-label="01 — IMPACT">
+        <!-- 01 MANIFESTO -->
+        <section id="about" class="manifesto" data-label="01 — ABOUT">
+            <div class="man-sticky">
+                <div class="wrap">
+                    <div class="eyebrow mono">ABOUT ME</div>
+                    <p class="man-text" id="man-text">I design AI agents that understand business context, interact with real systems and execute real-world tasks. Real-time voice AI, enterprise automation and production backends — practical AI that goes beyond the chatbox.</p>
+                    <div class="man-foot mono"><span>BENGALURU, INDIA</span><span>JANE · AIQWIP · FREELANCE</span><span>B.TECH CSE (AI/ML) · 8.62</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 IMPACT -->
+        <section id="impact" class="pad" data-label="02 — IMPACT">
             <div class="wrap">
                 <div class="eyebrow mono reveal">BY THE NUMBERS</div>
                 <h2 class="h2 reveal">Building AI that runs <span class="grad">real business workflows.</span></h2>
@@ -70,7 +82,7 @@
         </section>
 
         <!-- 02 EXPERIENCE -->
-        <section id="exp" class="exp" data-label="02 — EXPERIENCE">
+        <section id="exp" class="exp" data-label="03 — EXPERIENCE">
             <div class="exp-sticky">
                 <div class="wrap">
                     <div class="exp-head">
@@ -89,34 +101,25 @@
         </section>
 
         <!-- 03 FEATURED -->
-        <section id="featured" class="featured" data-label="03 — PROJECTS">
+        <section id="featured" class="featured" data-label="04 — PROJECTS">
             <div class="band band-outline" aria-hidden="true"><div class="band-track" data-band="FEATURED"></div></div>
             <div class="band band-fill" aria-hidden="true"><div class="band-track rev" data-band="PROJECTS"></div></div>
             <p class="band-caption mono reveal">SELECTED WORK &nbsp;·&nbsp; <a href="https://github.com/bharathmrr" target="_blank" rel="noopener">GITHUB.COM/BHARATHMRR</a></p>
         </section>
         <div id="projects"></div>
 
-        <!-- SHOWREEL -->
-        <section id="reel" class="pad" data-label="04 — SHOWREEL">
-            <div class="wrap">
-                <div class="eyebrow mono reveal">MOTION FILM · 4:52</div>
-                <h2 class="h2 reveal">The <span class="grad">showreel.</span></h2>
-                <div class="reel reveal">
-                    <div class="dev-bar"><i></i><i></i><i></i><span class="mono">portfolio-film.mp4</span></div>
-                    <video controls preload="metadata" playsinline poster="motion-film/poster.jpg">
-                        <source src="motion-film/portfolio-film.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="note reveal">Generated entirely from code — canvas animation, frame capture and a synthesised score. <a href="motion-film/">How it's built →</a></p>
-            </div>
-        </section>
-
         <!-- 05 MORE -->
-        <section id="more" class="pad" data-label="05 — MORE WORK">
-            <div class="wrap">
-                <div class="eyebrow mono reveal">BEYOND THE FEATURED</div>
-                <h2 class="h2 reveal">More systems I've shipped.</h2>
-                <div class="more-grid" id="more-grid"></div>
+        <section id="more" class="more" data-label="05 — MORE WORK">
+            <div class="more-pin">
+                <div class="wrap more-head">
+                    <div>
+                        <div class="eyebrow mono">BEYOND THE FEATURED</div>
+                        <h2 class="h2">More systems I've shipped.</h2>
+                    </div>
+                    <div class="more-count mono"><span id="more-cur">01</span> / <span id="more-tot">16</span></div>
+                </div>
+                <div class="more-track" id="more-grid"></div>
+                <div class="wrap more-bar"><span id="more-bar"></span></div>
             </div>
         </section>
 
@@ -173,6 +176,9 @@
 
     <footer class="footer mono">© 2026 BHARATHSIMHA REDDY PUTTA &nbsp;·&nbsp; DESIGNED &amp; BUILT IN CODE</footer>
 
+    <script src="assets/vendor/lenis.min.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/js/viz.js"></script>
     <script src="script.js"></script>
 </body>
