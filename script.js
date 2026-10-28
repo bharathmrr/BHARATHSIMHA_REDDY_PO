@@ -22,23 +22,23 @@
           pts: ['Responsive React front-ends with Node.js and Python back-ends', 'Integrated AI features: chatbots and smart recommendations'] },
     ];
     const PROJ = [
-        { t: ['AI Supplier', 'Intelligence'], org: 'JANE · OCT 2026', c: C.cy, d: 'From a parts request to verified suppliers in minutes. AI extracts part numbers and certifications, searches directories, the web and stock lists, reads supplier sites and PDFs — and scores every lead with evidence.',
+        { t: ['AI Supplier', 'Intelligence'], org: 'JANE · OCT 2026', role: 'Team build at Jane · Automation, AI & ML Engineer', c: C.cy, d: 'From a parts request to verified suppliers in minutes. AI extracts part numbers and certifications, searches directories, the web and stock lists, reads supplier sites and PDFs — and scores every lead with evidence.',
           stats: [['Minutes', 'from request to verified suppliers'], ['Evidence', 'linked on every lead'], ['2FA', 'per-company workspaces + audit trail']],
           tech: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript', 'Celery', 'Redis', 'Docker', 'Claude AI'], url: 'ai-supplier-intelligence',
           steps: [['img', 'assets/img/sup1.jpg', 'Request → scored suppliers'], ['img', 'assets/img/sup2.jpg', 'Sourcing dashboard'], ['v', 'globe', 'Live sourcing map']] },
-        { t: ['AI Sales Call', 'Engine'], org: 'JANE · AUG 2026', c: C.vi, d: 'Click “Call” from the lead sheet. Deepgram transcribes live, AI detects intent and objections, auto-sends onboarding, KYC and NDA links, updates the lead and grades the call.',
+        { t: ['AI Sales Call', 'Engine'], org: 'JANE · AUG 2026', role: 'Team build at Jane · Automation, AI & ML Engineer', c: C.vi, d: 'Click “Call” from the lead sheet. Deepgram transcribes live, AI detects intent and objections, auto-sends onboarding, KYC and NDA links, updates the lead and grades the call.',
           stats: [['1-click', 'call from the lead sheet'], ['Live', 'transcription & intent'], ['Auto', 'emails, KYC & NDA links']],
           tech: ['Python', 'VoIP', 'Deepgram', 'LLMs', 'Zoho CRM'], url: 'ai-sales-call-engine',
           steps: [['img', 'assets/img/sal1.jpg', 'Click-to-call with live AI'], ['img', 'assets/img/sal2.jpg', 'AI grading & coaching'], ['v', 'call', 'Live conversation intelligence']] },
-        { t: ['Drag', 'AI'], org: 'OPEN SOURCE · OCT 2025 — FEB 2026', c: C.am, d: 'A drag-and-drop canvas to design and deploy multi-agent AI systems — LLMs, RAG, ML/DL and data pipelines in one visual builder with live execution and debugging.',
+        { t: ['Drag', 'AI'], org: 'OPEN SOURCE · OCT 2025 — FEB 2026', role: 'Personal open-source project · designed & built end to end', c: C.am, d: 'A drag-and-drop canvas to design and deploy multi-agent AI systems — LLMs, RAG, ML/DL and data pipelines in one visual builder with live execution and debugging.',
           stats: [['77+', 'pre-built nodes'], ['4', 'LLM providers'], ['3', 'vector databases']],
           tech: ['React', 'React Flow', 'Tailwind', 'Node.js', 'Python', 'LangChain', 'MongoDB', 'Neo4j'], gh: 'https://github.com/bharathmrr/Agentic-AI-Workflow-DragAI-Edition-',
           steps: [['img', 'assets/img/drag1.jpg', 'Visual workflow builder'], ['img', 'motion-film/img/dragai.png', 'The DragAI identity', 'contain'], ['v', 'agents', 'Multi-agent reasoning']] },
-        { t: ['Codely', 'Voice AI'], org: 'OPEN SOURCE · PYTHON', c: C.pk, d: '“Code that listens.” A local AI voice assistant: speak naturally and LangGraph agents route your intent to actions — YouTube, Google, WhatsApp and more.',
+        { t: ['Codely', 'Voice AI'], org: 'OPEN SOURCE · PYTHON', role: 'Personal open-source project · designed & built end to end', c: C.pk, d: '“Code that listens.” A local AI voice assistant: speak naturally and LangGraph agents route your intent to actions — YouTube, Google, WhatsApp and more.',
           stats: [['Local', 'runs on your device'], ['LangGraph', 'intent routing'], ['4+', 'actions out of the box']],
           tech: ['Python', 'LangChain', 'LangGraph', 'Speech-to-Text', 'LLMs'], gh: 'https://github.com/bharathmrr/codely-AI-Voice-assistent-and-control-voice-to-system',
           steps: [['img', 'assets/img/cod1.jpg', 'Speak → route → act'], ['img', 'motion-film/img/codely_arch.png', 'Architecture (from the repo)', 'contain diag'], ['img', 'motion-film/img/codely_graph.png', 'LangGraph routing (from the repo)', 'contain diag']] },
-        { t: ['AI Hiring', 'Platform'], org: 'JANE · JUL 2026', c: C.gr, d: 'Autonomous recruitment: Zoho Recruit integration, AI resume parsing and scoring, a live duplex AI video interviewer with a digital avatar, and auto-scheduling with Managing Directors.',
+        { t: ['AI Hiring', 'Platform'], org: 'JANE · JUL 2026', role: 'Team build at Jane · Automation, AI & ML Engineer', c: C.gr, d: 'Autonomous recruitment: Zoho Recruit integration, AI resume parsing and scoring, a live duplex AI video interviewer with a digital avatar, and auto-scheduling with Managing Directors.',
           stats: [['20 min', 'live AI video interview'], ['Zoho', 'Recruit integration'], ['Auto', 'summaries & scheduling']],
           tech: ['Python', 'FastAPI', 'Zoho Recruit', 'Deepgram', 'Digital Avatar', 'LLMs'],
           steps: [['img', 'assets/img/hir1.jpg', 'Candidate pipeline'], ['talk', null, 'Live AI interviewer · speaking'], ['v', 'funnel', 'Scoring funnel']] },
@@ -160,12 +160,12 @@
             <div class="ptext"><div class="pghost">${String(pi + 1).padStart(2, '0')}</div>
                 <div class="peyebrow mono">PROJECT ${String(pi + 1).padStart(2, '0')} / ${String(PROJ.length).padStart(2, '0')}</div>
                 <h3 class="ptitle">${p.t[0]}<br><em>${p.t[1]}</em></h3>
-                <div class="porg mono">${p.org}</div>
+                <div class="porg mono">${p.org}</div>${p.role ? `<div class="prole">${p.role}</div>` : ''}
                 <p class="pdesc">${p.d}</p>
                 <div class="pstats">${p.stats.map(s => `<div class="pstat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
                 <div class="chips">${p.tech.map(t => `<span class="chip">${t}</span>`).join('')}</div>${link}</div>
             <div class="pvis"><div class="device"><div class="dev-bar"><i></i><i></i><i></i><span class="mono">${p.t.join(' ')} — live</span>${p.steps.some(s => s[0] === 'talk') ? '<button class="snd mono" type="button">🔊 SOUND ON</button>' : ''}</div>
-                <div class="screen"><canvas width="820" height="560"></canvas>${p.steps.map((s, si) => s[0] === 'img' ? `<div class="simg ${s[3] || ''}" data-s="${si}"><img src="${s[1]}" alt="${s[2]}" loading="lazy"></div>` : '').join('')}<div class="caption"></div></div></div>
+                <div class="screen"><canvas width="820" height="560"></canvas>${p.steps.map((s, si) => s[0] === 'img' ? `<div class="simg ${s[3] || ''}" data-s="${si}"><img src="${s[1]}" alt="${s[2]}" loading="lazy"></div>` : '').join('')}<div class="caption"></div><span class="concept mono">CONCEPT UI · ILLUSTRATIVE DATA</span></div></div>
                 <div class="steps">${p.steps.map((s, si) => `<button class="step" data-s="${si}">0${si + 1}<span class="lbl">${s[2].toUpperCase()}</span></button>`).join('')}</div></div>
         </div></div>`;
         projWrap.appendChild(sec);
@@ -180,7 +180,7 @@
         $$('.simg', st.sec).forEach(el => el.classList.toggle('on', +el.dataset.s === i));
         st.cv.classList.toggle('on', s[0] !== 'img');
         if (s[0] === 'talk') startTalk(st); else if (talk.st === st) stopTalk();
-        st.cap.textContent = `${i + 1} · ${s[2]}`; st.cap.style.opacity = s[0] === 'talk' ? 0 : '';
+        st.cap.textContent = `${i + 1} · ${s[2]}`; st.sec.querySelector('.concept').classList.toggle('on', s[0] === 'img' && s[1].startsWith('assets/img/')); st.cap.style.opacity = s[0] === 'talk' ? 0 : '';
     }
     // ------------------------------------------------------------------ talking AI interviewer (round face + real speech)
     const TALK_LINES = [
@@ -215,6 +215,7 @@
     const unlock = () => { if (talk.on && talk.blocked && talk.sound) { talk.blocked = false; sayLine(); } };
     addEventListener('pointerdown', unlock, { passive: true }); addEventListener('keydown', unlock);
     addEventListener('pagehide', () => synth && synth.cancel());
+    document.addEventListener('visibilitychange', () => { if (document.hidden && talk.on) stopTalk(); });
 
     const FACE = Array.from({ length: 1300 }, (_, i) => { const r = Math.sqrt((i + .5) / 1300), a = i * 2.39996; return [Math.cos(a) * r, Math.sin(a) * r]; });
     function drawTalk(c, t, k, col) {
@@ -320,11 +321,15 @@
     $('#copy-email').onclick = async e => { const em = e.currentTarget.dataset.email; try { await navigator.clipboard.writeText(em); $('#copy-label').textContent = 'COPIED'; } catch { location.href = 'mailto:' + em; } setTimeout(() => $('#copy-label').textContent = 'COPY', 1800); };
 
     // ------------------------------------------------------------------ main loop
-    const sphere1 = makeSphere($('#sphere'), { drag: true, n: 1200 }), sphere2 = makeSphere($('#sphere2'), { n: 900, speed: .08 });
+    const LITE = innerWidth < 760 || (navigator.hardwareConcurrency || 8) <= 4;
+    const sphere1 = makeSphere($('#sphere'), { drag: true, n: LITE ? 650 : 1200 }), sphere2 = makeSphere($('#sphere2'), { n: LITE ? 450 : 900, speed: .08 });
     const heroSec = $('#hero'), contactSec = $('#contact');
     const onScreen = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+    let frameN = 0;
     function frame(now) {
         const t = now / 1000;
+        if (document.hidden) { requestAnimationFrame(frame); return; }
+        if (LITE && (frameN = (frameN + 1) % 2)) { requestAnimationFrame(frame); return; }
         drawBg(t);
         if (onScreen(heroSec)) sphere1(t);
         if (onScreen(contactSec)) sphere2(t);
@@ -394,9 +399,9 @@
     mm.add('(min-width: 901px)', () => {
         // HERO — the name splits apart, sphere zooms through
         const hero = gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=90%', scrub: 1, pin: true, pinSpacing: true } });
-        hero.to('.hero-name .solid', { xPercent: -28, yPercent: -40, opacity: 0, ease: 'none' }, 0)
-            .to('.hero-name .light', { xPercent: 28, yPercent: 40, opacity: 0, ease: 'none' }, 0)
-            .to('.kicker, .hero-role, .hero-tags, .hero-rot', { y: -80, opacity: 0, stagger: .03, ease: 'none' }, 0)
+        hero.fromTo('.hero-name .solid', { xPercent: 0, yPercent: 0, opacity: 1 }, { xPercent: -28, yPercent: -40, opacity: 0, ease: 'none' }, 0)
+            .fromTo('.hero-name .light', { xPercent: 0, yPercent: 0, opacity: 1 }, { xPercent: 28, yPercent: 40, opacity: 0, ease: 'none' }, 0)
+            .fromTo('.kicker, .hero-role, .hero-tags, .hero-rot, .hero-cta', { y: 0, opacity: 1 }, { y: -80, opacity: 0, ease: 'none', immediateRender: false }, 0)
             .to('#sphere', { scale: 2.4, opacity: 0, ease: 'power1.in' }, 0)
             .to('.hero-foot', { opacity: 0, ease: 'none' }, 0);
 

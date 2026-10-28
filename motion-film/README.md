@@ -2,7 +2,7 @@
 
 A ~5-minute motion-graphics portfolio film, generated entirely from code. Every frame is drawn on an HTML canvas, captured frame-by-frame with Playwright, and encoded with ffmpeg. The soundtrack is synthesised in Python.
 
-**Watch:** [`portfolio-film.mp4`](portfolio-film.mp4) — also embedded in the *Showreel* section of the portfolio site.
+The rendered video isn't stored in the repo (it's ~90 MB). Run `./build.sh` to generate `portfolio-film.mp4`.
 
 ## What's in the film
 
